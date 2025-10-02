@@ -3,18 +3,18 @@ import { X } from 'lucide-react'
 
 const HamburgerMenu = ({ isOpen, onClose }) => {
   const menuItems = [
-    { name: 'INICIO', href: '#inicio' },
-    { name: 'NOSOTROS', href: '#nosotros' },
-    { name: 'SERVICIOS', href: '#servicios' },
-    { name: 'CONTACTO', href: '#contacto' }
+    { name: '¿TE INTERESA HEXAGENCY?', href: '#contacto' },
+    { name: 'AVISO LEGAL', href: '#legal' },
+    { name: 'POLÍTICA DE PRIVACIDAD', href: '#privacy' },
+    { name: 'TÉRMINOS DEL SERVICIO', href: '#terms' }
   ]
 
   const footerLinks = [
-    '¿TE INTERESA HEXAGENCY?',
-    'AVISO LEGAL',
-    'POLÍTICA DE PRIVACIDAD',
-    'POLÍTICA DE REEMBOLSO',
-    'TÉRMINOS DEL SERVICIO'
+    'NO DUDES EN CONTACTARNOS',
+    'HEXAGENCY',
+    'C/ de la Carrera de la Cruz 2, 41012 Sevilla',
+    'Teléfono: +34 666 666 666',
+    'Email: info@hexagency.com'
   ]
 
   const [hoveredItem, setHoveredItem] = useState(null)

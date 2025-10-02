@@ -2,7 +2,7 @@ import { X } from 'lucide-react'
 
 const About = () => {
   return (
-    <section id="nosotros" className="py-20 bg-white">
+    <section id="nosotros" className="h-full py-20 bg-white flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
