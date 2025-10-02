@@ -18,7 +18,7 @@ function App() {
       <Services />
       <ContactForm />
       
-      {/* Selector de idioma */}
+      {/* Selector de idioma
       <div className="fixed bottom-4 right-4 z-50">
         <button className="bg-white text-black px-4 py-2 rounded-lg shadow-lg hover:bg-gray-100 transition-colors flex items-center space-x-2">
           <Globe className="w-4 h-4" />
@@ -26,7 +26,7 @@ function App() {
           <ChevronDown className="w-4 h-4" />
         </button>
       </div>
-
+      */}
       {showAdminPanel && <AdminPanel onClose={() => setShowAdminPanel(false)} />}
     </div>
   )
