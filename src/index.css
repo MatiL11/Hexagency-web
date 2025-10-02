@@ -49,11 +49,25 @@ html {
   transform: translateZ(0);
 }
 
-/* Ocultar scrollbar cuando se muestra el formulario */
+/* Permitir scroll cuando se muestra el formulario pero ocultar scrollbar */
 body.show-form {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body.show-form::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }
 
 html.show-form {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+html.show-form::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }

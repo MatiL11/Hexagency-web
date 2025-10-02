@@ -49,33 +49,33 @@ const Services = () => {
   ]
 
   return (
-    <section id="servicios" className="h-full bg-white flex items-center overflow-y-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
+    <section id="servicios" className="h-full bg-white flex flex-col overflow-y-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1 flex flex-col">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-6">
             Nuestros Servicios
           </h2>
-          <div className="h-1 w-24 bg-black mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="h-1 w-12 sm:w-24 bg-black mx-auto mb-4 sm:mb-8"></div>
+          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto px-2">
             Una metodología completa que va más allá del diseño web tradicional
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon
             return (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="mb-4">
-                  <IconComponent className="w-12 h-12 text-black" />
+              <div key={index} className="bg-white p-4 sm:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <div className="mb-2 sm:mb-4">
+                  <IconComponent className="w-8 h-8 sm:w-12 sm:h-12 text-black" />
                 </div>
-                <h3 className="text-xl font-bold text-black mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <h3 className="text-base sm:text-xl font-bold text-black mb-2 sm:mb-4">{service.title}</h3>
+                <p className="text-gray-600 mb-3 sm:mb-6 text-xs sm:text-base">{service.description}</p>
                 
-                <ul className="space-y-2">
+                <ul className="space-y-1 sm:space-y-2">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start text-sm text-gray-600">
-                      <Check className="text-green-500 mr-2 w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <li key={featureIndex} className="flex items-start text-xs sm:text-sm text-gray-600">
+                      <Check className="text-green-500 mr-1 sm:mr-2 w-2 h-2 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5" />
                       {feature}
                     </li>
                   ))}

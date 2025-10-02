@@ -8,18 +8,23 @@ const Header = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-40 bg-white">
-        <div className="w-full px-6">
-          <div className="flex justify-between items-center h-16">
+        <div className="w-full px-4 sm:px-6">
+          <div className="flex justify-between items-center h-14 sm:h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-black">HEXAGENCY</h1>
+              <button 
+                onClick={() => window.location.reload()}
+                className="text-xl sm:text-2xl font-bold text-black hover:text-gray-600 transition-colors"
+              >
+                HEXAGENCY
+              </button>
             </div>
 
             {/* Right side icons */}
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-4 sm:space-x-6">
               {/* Usuario */}
               <button className="text-black hover:text-gray-600 transition-colors">
-                <User className="w-6 h-6" />
+                <User className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               {/* Menú hamburguesa */}
@@ -27,7 +32,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(true)}
                 className="text-black hover:text-gray-600 transition-colors"
               >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>

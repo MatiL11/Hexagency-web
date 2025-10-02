@@ -82,7 +82,7 @@ const ContactForm = () => {
   }
 
   return (
-    <section id="contacto" className="h-[calc(105vh-100px)] bg-white flex items-center justify-center overflow-hidden relative scrollbar-hide">
+    <section id="contacto" className="min-h-screen bg-white flex items-center justify-center relative py-8 sm:py-12">
       {/* Flecha para volver al hero */}
       <button
         onClick={() => {
@@ -91,23 +91,23 @@ const ContactForm = () => {
             behavior: 'smooth'
           })
         }}
-        className="absolute top-4 right-4 bg-black text-white p-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-110 shadow-lg z-10"
+        className="absolute top-16 right-4 bg-black text-white p-2 sm:p-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-110 shadow-lg z-10"
         title="Volver al inicio"
       >
-        <ChevronUp className="w-6 h-6" />
+        <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Formulario completo */}
-          <form onSubmit={handleSubmit} className="lg:col-span-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <form onSubmit={handleSubmit} className="lg:col-span-4 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Header a la izquierda */}
-            <div className="lg:col-span-1 flex flex-col justify-center">
-              <h2 className="text-2xl md:text-3xl font-bold text-black mb-3">
+            <div className="lg:col-span-1 flex flex-col justify-center mb-6 lg:mb-0">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-3">
                 Consulta Gratuita
               </h2>
-              <div className="h-1 w-24 bg-black mb-4"></div>
-              <p className="text-base text-gray-600 mb-6">
+              <div className="h-1 w-16 sm:w-24 bg-black mb-4"></div>
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
                 Completa este formulario y te contactaremos para una consulta personalizada sobre tu negocio
               </p>
               
@@ -116,29 +116,29 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-black hover:bg-gray-800 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base"
                 >
                   {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
                 </button>
-                <p className="text-sm text-gray-500 mt-4 text-center">
+                <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center">
                   * Campos obligatorios
                 </p>
               </div>
             </div>
 
             {/* Formulario en las 3 columnas restantes */}
-            <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             
             {/* Columna Izquierda - Información Personal */}
-            <div className="lg:col-span-1 flex">
-              <div className="bg-black p-4 rounded-lg shadow-lg border border-gray-800 flex-1">
-                <div className="flex items-center mb-4">
-                  <div className="w-2 h-8 bg-white rounded-full mr-4"></div>
-                  <h3 className="text-xl font-bold text-white">Información Personal</h3>
+            <div className="sm:col-span-1 lg:col-span-1 flex">
+              <div className="bg-black p-3 sm:p-4 rounded-lg shadow-lg border border-gray-800 flex-1">
+                <div className="flex items-center mb-3 sm:mb-4">
+                  <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-white rounded-full mr-3 sm:mr-4"></div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Información Personal</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Nombre completo *
                     </label>
                     <input
@@ -147,12 +147,12 @@ const ContactForm = () => {
                       value={formData.nombre}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 text-sm sm:text-base"
                       placeholder="Tu nombre completo"
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Email *
                     </label>
                     <input
@@ -161,12 +161,12 @@ const ContactForm = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 text-sm sm:text-base"
                       placeholder="tu@email.com"
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Teléfono
                     </label>
                     <input
@@ -174,12 +174,12 @@ const ContactForm = () => {
                       name="telefono"
                       value={formData.telefono}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 text-sm sm:text-base"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Empresa
                     </label>
                     <input
@@ -187,7 +187,7 @@ const ContactForm = () => {
                       name="empresa"
                       value={formData.empresa}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 text-sm sm:text-base"
                       placeholder="Nombre de tu empresa"
                     />
                   </div>
@@ -196,15 +196,15 @@ const ContactForm = () => {
             </div>
 
             {/* Columna Central - Información del Negocio */}
-            <div className="lg:col-span-1 flex">
-              <div className="bg-black p-4 rounded-lg shadow-lg border border-gray-800 flex-1">
-                <div className="flex items-center mb-4">
-                  <div className="w-2 h-8 bg-white rounded-full mr-4"></div>
-                  <h3 className="text-xl font-bold text-white">Información del Negocio</h3>
+            <div className="sm:col-span-1 lg:col-span-1 flex">
+              <div className="bg-black p-3 sm:p-4 rounded-lg shadow-lg border border-gray-800 flex-1">
+                <div className="flex items-center mb-3 sm:mb-4">
+                  <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-white rounded-full mr-3 sm:mr-4"></div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Información del Negocio</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Tipo de negocio *
                     </label>
                     <select
@@ -212,7 +212,7 @@ const ContactForm = () => {
                       value={formData.tipoNegocio}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
                     >
                       <option value="">Selecciona tu tipo de negocio</option>
                       <option value="retail">Retail / Tienda física</option>
@@ -225,14 +225,14 @@ const ContactForm = () => {
                     </select>
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Ventas mensuales
                     </label>
                     <select
                       name="ventasMensuales"
                       value={formData.ventasMensuales}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
                     >
                       <option value="">Rango de ventas mensuales</option>
                       <option value="0-5k">$0 - $5,000</option>
@@ -243,14 +243,14 @@ const ContactForm = () => {
                     </select>
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Número de empleados
                     </label>
                     <select
                       name="empleados"
                       value={formData.empleados}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
                     >
                       <option value="">Cantidad de empleados</option>
                       <option value="1-5">1-5 empleados</option>
@@ -260,14 +260,14 @@ const ContactForm = () => {
                     </select>
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Presupuesto estimado
                     </label>
                     <select
                       name="presupuesto"
                       value={formData.presupuesto}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
                     >
                       <option value="">Presupuesto para el proyecto</option>
                       <option value="5k-15k">$5,000 - $15,000</option>
@@ -281,15 +281,15 @@ const ContactForm = () => {
             </div>
 
             {/* Columna Derecha - Preferencias y Envío */}
-            <div className="lg:col-span-1 flex">
-              <div className="bg-black p-4 rounded-lg shadow-lg border border-gray-800 flex-1">
-                <div className="flex items-center mb-4">
-                  <div className="w-2 h-8 bg-white rounded-full mr-4"></div>
-                  <h3 className="text-xl font-bold text-white">Preferencias de Contacto</h3>
+            <div className="sm:col-span-2 lg:col-span-1 flex">
+              <div className="bg-black p-3 sm:p-4 rounded-lg shadow-lg border border-gray-800 flex-1">
+                <div className="flex items-center mb-3 sm:mb-4">
+                  <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-white rounded-full mr-3 sm:mr-4"></div>
+                  <h3 className="text-lg sm:text-xl font-bold text-white">Preferencias de Contacto</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Fecha preferida
                     </label>
                     <input
@@ -297,18 +297,18 @@ const ContactForm = () => {
                       name="fechaPreferida"
                       value={formData.fechaPreferida}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
                     />
                   </div>
                   <div className="group">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Hora preferida
                     </label>
                     <select
                       name="horaPreferida"
                       value={formData.horaPreferida}
                       onChange={handleChange}
-                      className="w-full px-3 py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black"
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
                     >
                       <option value="">Horario de preferencia</option>
                       <option value="9-12">9:00 AM - 12:00 PM</option>
@@ -323,13 +323,13 @@ const ContactForm = () => {
 
               {/* Sección de mensajes largos - Ancho completo */}
               <div className="lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="bg-black p-4 rounded-lg shadow-lg border border-gray-800 flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="w-2 h-8 bg-white rounded-full mr-4"></div>
-                         <h3 className="text-xl font-bold text-white">Desafíos Actuales</h3>
+                <div className="bg-black p-3 sm:p-4 rounded-lg shadow-lg border border-gray-800 flex flex-col">
+                  <div className="flex items-center mb-3 sm:mb-4">
+                    <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-white rounded-full mr-3 sm:mr-4"></div>
+                        <h3 className="text-lg sm:text-xl font-bold text-white">Desafíos Actuales</h3>
                   </div>
                   <div className="group flex-1 flex flex-col">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       ¿Cuáles son los principales desafíos de tu negocio?
                     </label>
                     <textarea
@@ -337,19 +337,19 @@ const ContactForm = () => {
                       value={formData.desafios}
                       onChange={handleChange}
                       rows={3}
-                      className="w-full px-3 py-2 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 resize-none flex-1"
+                      className="w-full px-2 sm:px-3 py-1.5 sm:py-2 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 resize-none flex-1 text-sm sm:text-base"
                       placeholder="Describe los principales problemas o limitaciones que enfrenta tu negocio actualmente..."
                     />
                   </div>
                 </div>
 
-                <div className="bg-black p-4 rounded-lg shadow-lg border border-gray-800 flex flex-col">
-                  <div className="flex items-center mb-4">
-                    <div className="w-2 h-8 bg-white rounded-full mr-4"></div>
-                         <h3 className="text-xl font-bold text-white">Objetivos</h3>
+                <div className="bg-black p-3 sm:p-4 rounded-lg shadow-lg border border-gray-800 flex flex-col">
+                  <div className="flex items-center mb-3 sm:mb-4">
+                    <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-white rounded-full mr-3 sm:mr-4"></div>
+                        <h3 className="text-lg sm:text-xl font-bold text-white">Objetivos</h3>
                   </div>
                   <div className="group flex-1 flex flex-col">
-                    <label className="block text-sm font-semibold text-gray-300 mb-3 group-focus-within:text-white transition-colors">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       ¿Qué objetivos quieres lograr?
                     </label>
                     <textarea
@@ -357,7 +357,7 @@ const ContactForm = () => {
                       value={formData.objetivos}
                       onChange={handleChange}
                       rows={3}
-                      className="w-full px-3 py-2 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 resize-none flex-1"
+                      className="w-full px-2 sm:px-3 py-1.5 sm:py-2 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black placeholder-gray-500 resize-none flex-1 text-sm sm:text-base"
                       placeholder="Describe qué esperas lograr con nuestra ayuda y cómo te gustaría que sea tu negocio en el futuro..."
                     />
                   </div>

@@ -67,35 +67,43 @@ const Hero = ({ onShowContactForm }) => {
       <div className="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-        <div className="mb-8">
-          <div className="min-h-[200px] md:min-h-[300px] flex items-center justify-center">
-            <h1 className={`text-6xl md:text-8xl font-bold text-white leading-tight transition-all duration-500 ease-in-out ${
-              isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
-            }`}>
-              {displayText}
-              <span className="animate-pulse">|</span>
-            </h1>
-          </div>
-          <div className="h-2 w-24 bg-white mx-auto mb-8 transition-all duration-500 ease-in-out"></div>
-        </div>
+             <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+               <div className="mb-6 sm:mb-8">
+                 <div className="min-h-[150px] sm:min-h-[200px] md:min-h-[300px] flex items-center justify-center">
+                   <h1 className={`text-4xl sm:text-6xl md:text-8xl font-bold text-white leading-tight transition-all duration-500 ease-in-out ${
+                     isTransitioning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
+                   }`}>
+                     {displayText}
+                     <span className="animate-pulse">|</span>
+                   </h1>
+                 </div>
+                 <div className="h-1 sm:h-2 w-16 sm:w-24 bg-white mx-auto mb-6 sm:mb-8 transition-all duration-500 ease-in-out"></div>
+               </div>
+               
+               <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 font-light px-2">
+                 Transformamos tu modelo de negocio físico en una estrategia digital rentable y escalable
+               </p>
         
-        <p className="text-xl md:text-2xl text-white mb-8 font-light">
-          Transformamos tu modelo de negocio físico en una estrategia digital rentable y escalable
-        </p>
-        
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <button 
             onClick={() => {
               onShowContactForm()
-              // Scroll hacia abajo para mostrar el formulario centrado
+              // Scroll hacia abajo para mostrar el formulario
               setTimeout(() => {
                 const formElement = document.getElementById('contacto')
                 if (formElement) {
-                  formElement.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'center'
-                  })
+                  // En móviles, usar scrollTo para evitar problemas de posicionamiento
+                  if (window.innerWidth < 768) {
+                    window.scrollTo({
+                      top: window.innerHeight,
+                      behavior: 'smooth'
+                    })
+                  } else {
+                    formElement.scrollIntoView({ 
+                      behavior: 'smooth',
+                      block: 'start'
+                    })
+                  }
                 } else {
                   window.scrollTo({
                     top: window.innerHeight,
@@ -104,14 +112,14 @@ const Hero = ({ onShowContactForm }) => {
                 }
               }, 100)
             }}
-            className="bg-white text-black px-8 py-4 text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 rounded-lg"
+            className="bg-white text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 rounded-lg"
           >
             Descubre nuestra metodología
           </button>
           
           <div className="flex justify-center">
             <div className="animate-bounce">
-              <ChevronDown className="w-6 h-6 text-white" />
+              <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
           </div>
         </div>
