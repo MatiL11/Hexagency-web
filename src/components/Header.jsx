@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { User, Menu } from 'lucide-react'
 import HamburgerMenu from './HamburgerMenu'
+import HexagencyLogo from '../assets/HexagencyLogo.png'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -14,9 +15,13 @@ const Header = () => {
             <div className="flex-shrink-0">
               <button 
                 onClick={() => window.location.reload()}
-                className="text-xl sm:text-2xl font-bold text-black hover:text-gray-600 transition-colors"
+                className="flex items-center hover:opacity-80 transition-opacity duration-300"
               >
-                HEXAGENCY
+                <img 
+                  src={HexagencyLogo} 
+                  alt="Hexagency" 
+                  className="h-12 sm:h-12 w-auto object-contain"
+                />
               </button>
             </div>
 
