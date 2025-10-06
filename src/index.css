@@ -71,3 +71,22 @@ html.show-form {
 html.show-form::-webkit-scrollbar {
   display: none;  /* Chrome, Safari and Opera */
 }
+
+/* Animación del carrusel infinito */
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite var(--scroll-duration, 30s) linear infinite;
+}
+
+/* Pausar animación en hover */
+.animate-scroll-infinite:hover {
+  animation-play-state: paused;
+}
