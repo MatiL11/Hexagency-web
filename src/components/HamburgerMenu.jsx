@@ -14,7 +14,7 @@ const HamburgerMenu = ({ isOpen, onClose }) => {
     'HEXAGENCY',
     'C/ de la Carrera de la Cruz 2, 41012 Sevilla',
     'Teléfono: +34 666 666 666',
-    'Email: info@hexagency.com'
+    'Email: fernando@hexagency.mx'
   ]
 
   const [hoveredItem, setHoveredItem] = useState(null)

@@ -1,108 +1,143 @@
-import { X } from 'lucide-react'
+import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool } from 'lucide-react'
 
 const About = () => {
+  const teamMembers = [
+    {
+      name: "Fernando Ramírez",
+      position: "Director Ejecutivo y Estratega de Innovación Empresarial",
+      icon: Crown,
+      isDirector: true
+    },
+    {
+      name: "Yzak García",
+      position: "Asesor Bursátil e Inmobiliario",
+      icon: Briefcase
+    },
+    {
+      name: "Jesús Arias",
+      position: "Asesor en Contaduría Pública",
+      icon: Briefcase
+    },
+    {
+      name: "Andre De Alba",
+      position: "Asesor Bursátil",
+      icon: Briefcase
+    },
+    {
+      name: "Tadeo B.",
+      position: "Programador Analista",
+      icon: Code
+    },
+    {
+      name: "Adrián T.",
+      position: "Programador y Especialista en Ciberseguridad",
+      icon: Shield
+    },
+    {
+      name: "Maximiliano Arroyo",
+      position: "Programador Analista",
+      icon: Code
+    },
+    {
+      name: "Mariana R.",
+      position: "Project Manager",
+      icon: Users
+    },
+    {
+      name: "Carlos J.",
+      position: "Diseñador UX/UI",
+      icon: Palette
+    },
+    {
+      name: "Erick L.",
+      position: "Desarrollador Back-End",
+      icon: Database
+    },
+    {
+      name: "Luna A.",
+      position: "Estratega de Contenido Digital",
+      icon: PenTool
+    }
+  ]
+
   return (
-    <section id="nosotros" className="h-full py-8 sm:py-20 bg-white flex items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 sm:mb-16">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-6">
-            ¿Por qué somos diferentes?
+    <section id="nosotros" className="h-full bg-white flex flex-col overflow-y-auto">
+      <div className="max-w-7xl mx-auto sm:px-6 lg:pt-4 sm:py-6 flex-1 flex flex-col">
+        {/* Header Section */}
+        <div className="text-center mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2 sm:mb-3">
+            Quiénes Somos
           </h2>
-          <div className="h-1 w-12 sm:w-24 bg-black mx-auto mb-4 sm:mb-8"></div>
-          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto px-2">
-            No solo diseñamos sitios web o ecommerce. Analizamos tu modelo de negocio completo 
-            para construir una estrategia digital que realmente funcione.
+          <div className="h-1 w-12 sm:w-24 bg-black mx-auto mb-3 sm:mb-2"></div>
+          <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto px-2 mb-4 sm:mb-2">
+            
+              En Hexagency creemos que cualquier empresa puede evolucionar si combina estrategia, tecnología y visión.
+            Transformamos negocios físicos en modelos digitales rentables, automatizados y listos para escalar.
+            Nuestro trabajo une finanzas, software y estrategia real para lograr resultados medibles y sostenibles.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-16 items-center">
-          {/* Left side - Problem */}
-          <div className="space-y-4 sm:space-y-8">
-            <div className="bg-gray-50 p-4 sm:p-8 rounded-lg">
-              <h3 className="text-lg sm:text-2xl font-bold text-black mb-3 sm:mb-4">
-                El problema con otras agencias
-              </h3>
-              <ul className="space-y-2 sm:space-y-4 text-gray-600">
-                <li className="flex items-start">
-                  <X className="text-red-500 mr-2 sm:mr-3 w-3 h-3 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-base">Solo crean sitios web sin entender tu negocio</span>
-                </li>
-                <li className="flex items-start">
-                  <X className="text-red-500 mr-2 sm:mr-3 w-3 h-3 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-base">No analizan tu modelo de negocio actual</span>
-                </li>
-                <li className="flex items-start">
-                  <X className="text-red-500 mr-2 sm:mr-3 w-3 h-3 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-base">No consideran rentabilidad ni escalabilidad</span>
-                </li>
-                <li className="flex items-start">
-                  <X className="text-red-500 mr-2 sm:mr-3 w-3 h-3 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5" />
-                  <span className="text-xs sm:text-base">Soluciones genéricas que no se adaptan a ti</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Right side - Our Solution */}
-          <div className="space-y-4 sm:space-y-8">
-            <div className="bg-black text-white p-4 sm:p-8 rounded-lg">
-              <h3 className="text-lg sm:text-2xl font-bold mb-3 sm:mb-4">
-                Nuestra metodología
-              </h3>
-              <div className="space-y-3 sm:space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-white text-black w-5 h-5 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold mr-2 sm:mr-4 flex-shrink-0 text-xs sm:text-base">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1 sm:mb-2 text-xs sm:text-base">Análisis del modelo físico</h4>
-                    <p className="text-gray-300 text-xs sm:text-sm">
-                      Evaluamos ventas, costos, egresos, roles administrativos y flujo de caja
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-white text-black w-5 h-5 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold mr-2 sm:mr-4 flex-shrink-0 text-xs sm:text-base">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1 sm:mb-2 text-xs sm:text-base">Construcción del modelo digital</h4>
-                    <p className="text-gray-300 text-xs sm:text-sm">
-                      Creamos un modelo digital personalizado basado en tu análisis
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-white text-black w-5 h-5 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold mr-2 sm:mr-4 flex-shrink-0 text-xs sm:text-base">
-                    3
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-1 sm:mb-2 text-xs sm:text-base">Optimización y escalabilidad</h4>
-                    <p className="text-gray-300 text-xs sm:text-sm">
-                      Hacemos tu negocio más rentable y escalable digitalmente
-                    </p>
-                  </div>
-                </div>
+        {/* Director Section */}
+        <div className="mb-4 sm:mb-6">
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              {/* Placeholder for Director Image */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
+                <Crown className="w-10 h-10 sm:w-12 sm:h-12 text-gray-500" />
+              </div>
+              
+              <div className="flex-1 text-center sm:text-left">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2">
+                  Fernando Ramírez
+                </h3>
+                <p className="text-sm sm:text-base text-gray-700 mb-2 sm:mb-3">
+                  Director Ejecutivo y Estratega de Innovación Empresarial
+                </p>
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                  Líder visionario con más de una década de experiencia en transformación digital empresarial. 
+                  Especialista en estrategias de crecimiento, automatización de procesos y optimización de modelos de negocio.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-8 sm:mt-20 grid grid-cols-3 gap-2 sm:gap-8">
-          <div className="text-center">
-            <div className="text-lg sm:text-4xl font-bold text-black mb-1 sm:mb-2">100%</div>
-            <div className="text-gray-600 text-xs sm:text-base">Personalizado</div>
+        {/* Team Section */}
+        <div className="flex-1 flex flex-col">
+          <h3 className="text-lg sm:text-xl font-bold text-black text-center mb-3 sm:mb-4">
+            EQUIPO HEXAGENCY
+          </h3>
+          
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3">
+            {teamMembers.slice(1).map((member, index) => {
+              const IconComponent = member.icon
+              return (
+                <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
+                  {/* Placeholder for Team Member Image */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                    <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                  </div>
+                  
+                  <div className="text-center">
+                    <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
+                      {member.name}
+                    </h4>
+                    <p className="text-xs text-gray-600 leading-tight">
+                      {member.position}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
           </div>
-          <div className="text-center">
-            <div className="text-lg sm:text-4xl font-bold text-black mb-1 sm:mb-2">+50%</div>
-            <div className="text-gray-600 text-xs sm:text-base">Aumento promedio en rentabilidad</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg sm:text-4xl font-bold text-black mb-1 sm:mb-2">24/7</div>
-            <div className="text-gray-600 text-xs sm:text-base">Soporte continuo</div>
+        </div>
+
+        {/* Team Description */}
+        <div className="text-center mt-3 sm:mt-4">
+          <div className="bg-white rounded-lg p-3 sm:max-w-4xl mx-auto">
+            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+              <span className="text-green-600 font-semibold"></span> Parte del equipo de Hexagency: expertos en estrategia, finanzas, programación y automatización.
+            </p>
           </div>
         </div>
       </div>

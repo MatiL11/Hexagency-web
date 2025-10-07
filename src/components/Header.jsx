@@ -20,7 +20,7 @@ const Header = () => {
                 <img 
                   src={HexagencyLogo} 
                   alt="Hexagency" 
-                  className="h-12 sm:h-12 w-auto object-contain"
+                  className="h-24 sm:h-32 w-auto object-contain"
                 />
               </button>
             </div>

@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
+import MediaSection from './components/MediaSection'
 import ContactForm from './components/ContactForm'
 import AdminPanel from './components/AdminPanel'
 
@@ -29,7 +30,7 @@ function App() {
   }, [showContactForm])
   const scrollContainerRef = useRef(null)
   const [currentSection, setCurrentSection] = useState(0)
-  const totalSections = 3
+  const totalSections = 4
 
   // Convertir scroll vertical en horizontal
   useEffect(() => {
@@ -105,10 +106,13 @@ function App() {
           <Hero onShowContactForm={() => setShowContactForm(true)} />
         </div>
         <div className="flex-shrink-0 w-full h-full snap-center">
+          <Services />
+        </div>
+        <div className="flex-shrink-0 w-full h-full snap-center">
           <About />
         </div>
         <div className="flex-shrink-0 w-full h-full snap-center">
-          <Services />
+          <MediaSection />
         </div>
       </div>
       
@@ -133,16 +137,6 @@ function App() {
           />
         ))}
       </div>
-
-      {/* Selector de idioma 
-      <div className="fixed bottom-4 right-4 z-50">
-        <button className="bg-white text-black px-4 py-2 rounded-lg shadow-lg hover:bg-gray-100 transition-colors flex items-center space-x-2">
-          <Globe className="w-4 h-4" />
-          <span>ES</span>
-          <ChevronDown className="w-4 h-4" />
-        </button>
-      </div>
-      */}
       {showAdminPanel && <AdminPanel onClose={() => setShowAdminPanel(false)} />}
     </div>
   )
