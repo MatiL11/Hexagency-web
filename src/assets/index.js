@@ -1,5 +1,5 @@
 // Media Logos
-export { default as ForbesLogo } from './ForbesLogo.png'
+export { default as ForbesLogo } from './forbesLogo.png'
 export { default as EntrepreneurLogo } from './EntrepreneurLogo.png'
 export { default as BloombergLogo } from './BloombergLogo.png'
 export { default as GQLogo } from './GQLogo.png'
