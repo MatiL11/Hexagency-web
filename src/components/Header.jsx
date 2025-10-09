@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { User, Menu } from 'lucide-react'
 import HamburgerMenu from './HamburgerMenu'
-import HexagencyLogo from '../assets/HexagencyLogo.png'
+import HexagencyLogo from '../assets/HexaLogo.png'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

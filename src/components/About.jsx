@@ -1,10 +1,10 @@
-import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool } from 'lucide-react'
+import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool, Camera, Video } from 'lucide-react'
 
 const About = () => {
   const teamMembers = [
     {
       name: "Fernando Ramírez",
-      position: "Director Ejecutivo y Estratega de Innovación Empresarial",
+      position: "Director - Estratega Financiero e Innovación Empresarial",
       icon: Crown,
       isDirector: true
     },
@@ -15,7 +15,7 @@ const About = () => {
     },
     {
       name: "Jesús Arias",
-      position: "Asesor en Contaduría Pública",
+      position: "Asesor SAT y Contaduría Pública",
       icon: Briefcase
     },
     {
@@ -25,23 +25,18 @@ const About = () => {
     },
     {
       name: "Tadeo B.",
-      position: "Programador Analista",
+      position: "Programador Analista / Diseñador Web",
       icon: Code
     },
     {
       name: "Adrián T.",
-      position: "Programador y Especialista en Ciberseguridad",
+      position: "Ingeniero en Ciberseguridad",
       icon: Shield
     },
     {
       name: "Maximiliano Arroyo",
-      position: "Programador Analista",
+      position: "Ingeniero en Software",
       icon: Code
-    },
-    {
-      name: "Mariana R.",
-      position: "Project Manager",
-      icon: Users
     },
     {
       name: "Carlos J.",
@@ -49,14 +44,24 @@ const About = () => {
       icon: Palette
     },
     {
-      name: "Erick L.",
-      position: "Desarrollador Back-End",
-      icon: Database
-    },
-    {
       name: "Luna A.",
       position: "Estratega de Contenido Digital",
       icon: PenTool
+    },
+    {
+      name: "Alesh Ancira",
+      position: "Asesor en Imagen y Presencia Digital",
+      icon: Camera
+    },
+    {
+      name: "L. Enrique Ramírez",
+      position: "Event Project Manager - Administrador",
+      icon: Users
+    },
+    {
+      name: "Leonardo Ramírez V",
+      position: "Drone Operator & Video Producer",
+      icon: Video
     }
   ]
 
@@ -91,7 +96,7 @@ const About = () => {
                   Fernando Ramírez
                 </h3>
                 <p className="text-sm sm:text-base text-gray-700 mb-2 sm:mb-3">
-                  Director Ejecutivo y Estratega de Innovación Empresarial
+                  Director - Estratega Financiero e Innovación Empresarial
                 </p>
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
                   Líder visionario con más de una década de experiencia en transformación digital empresarial. 
@@ -108,7 +113,8 @@ const About = () => {
             EQUIPO HEXAGENCY
           </h3>
           
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3">
+          {/* Vista para Móviles - Grid único sin espacios vacíos */}
+          <div className="flex-1 grid grid-cols-3 sm:grid-cols-4 lg:hidden gap-2 sm:gap-3">
             {teamMembers.slice(1).map((member, index) => {
               const IconComponent = member.icon
               return (
@@ -129,6 +135,57 @@ const About = () => {
                 </div>
               )
             })}
+          </div>
+
+          {/* Vista para Monitores - Dos filas separadas (5 + 6) */}
+          <div className="hidden lg:flex lg:flex-col gap-2 sm:gap-3 flex-1">
+            {/* Primera fila - 5 empleados */}
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
+              {teamMembers.slice(1, 6).map((member, index) => {
+                const IconComponent = member.icon
+                return (
+                  <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
+                    {/* Placeholder for Team Member Image */}
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                    </div>
+                    
+                    <div className="text-center">
+                      <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
+                        {member.name}
+                      </h4>
+                      <p className="text-xs text-gray-600 leading-tight">
+                        {member.position}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Segunda fila - 6 empleados */}
+            <div className="grid grid-cols-6 gap-2 sm:gap-3">
+              {teamMembers.slice(6).map((member, index) => {
+                const IconComponent = member.icon
+                return (
+                  <div key={index + 5} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
+                    {/* Placeholder for Team Member Image */}
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                    </div>
+                    
+                    <div className="text-center">
+                      <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
+                        {member.name}
+                      </h4>
+                      <p className="text-xs text-gray-600 leading-tight">
+                        {member.position}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
 

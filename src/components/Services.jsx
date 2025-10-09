@@ -176,21 +176,21 @@ const About = () => {
   }
 
   return (
-    <section id="nosotros" className="h-full pb-4 sm:pb-12 pt-4 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 sm:mb-8">
+    <section id="nosotros" className="h-full bg-white flex flex-col overflow-y-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2 sm:mb-3">
             Nuestros Programas
           </h2>
-          <div className="h-1 w-12 sm:w-24 bg-black mx-auto mb-2 sm:mb-4"></div>
-          <p className="text-base sm:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+          <div className="h-1 w-12 sm:w-24 bg-black mx-auto mb-2 sm:mb-3"></div>
+          <p className="text-sm sm:text-base text-gray-600 max-w-3xl mx-auto px-2">
             Nuestros programas están diseñados para ayudarte a alcanzar tus objetivos de negocio de manera eficiente y sostenible.
           </p>
         </div>
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          {/* Left Column - Plans Carousel */}
+          {/* Plans Carousel */}
           <div className="space-y-4 lg:col-span-1">
             <h3 className="text-lg sm:text-xl font-bold text-black mb-4 text-center sm:text-left">Selecciona un Plan</h3>
             
@@ -312,7 +312,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Column - FAQ for Selected Plan */}
+          {/* Right Column - FAQ for Selected Plan (Desktop Only) */}
           <div className="hidden lg:block">
             <h3 className="text-lg sm:text-xl font-bold text-black mb-4">
               Preguntas Frecuentes - {plans.find(p => p.id === selectedPlan)?.name}
@@ -354,6 +354,50 @@ const About = () => {
                 ¡La cita se resta del plan que elijas si decides optar por nosotros!
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* FAQ Section for Mobile - Below Plans */}
+        <div className="lg:hidden mt-6">
+          <h3 className="text-base sm:text-lg font-bold text-black mb-3 text-center">
+            Preguntas Frecuentes - {plans.find(p => p.id === selectedPlan)?.name}
+          </h3>
+          
+          <div className="space-y-2">
+            {planFaqs[selectedPlan].map((faq) => (
+              <div key={faq.id} className="bg-gray-50 rounded-lg border border-gray-200">
+                <button
+                  onClick={() => toggleFaq(faq.id)}
+                  className="w-full px-3 py-2.5 text-left flex items-center justify-between hover:bg-gray-100 transition-colors"
+                >
+                  <span className="font-semibold text-black text-xs pr-2">
+                    {faq.question}
+                  </span>
+                  {expandedFaq === faq.id ? (
+                    <ChevronUp className="w-3 h-3 text-gray-500 flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="w-3 h-3 text-gray-500 flex-shrink-0" />
+                  )}
+                </button>
+                
+                {expandedFaq === faq.id && (
+                  <div className="px-3 pb-2.5">
+                    <p className="text-gray-700 text-xs leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Texto Informativo Mobile */}
+          <div className="mt-4 p-3 bg-white">
+            <p className="text-xs text-gray-700 leading-relaxed text-center">
+              Puedes iniciar con una cita de diagnóstico por $100 USD o adquirir directamente el programa completo.
+              <br />
+              ¡La cita se resta del plan que elijas si decides optar por nosotros!
+            </p>
           </div>
         </div>
       </div>
