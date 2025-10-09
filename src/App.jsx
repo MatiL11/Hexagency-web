@@ -124,7 +124,7 @@ function App() {
       )}
       
       {/* Indicadores de sección */}
-      <div className="fixed bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
+      <div className="fixed bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
         {Array.from({ length: totalSections }).map((_, index) => (
           <button
             key={index}
