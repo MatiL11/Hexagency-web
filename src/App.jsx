@@ -119,24 +119,26 @@ function App() {
       {/* Formulario de contacto que aparece al hacer scroll hacia abajo */}
       {showContactForm && (
         <div className="w-full bg-white">
-          <ContactForm />
+          <ContactForm onHideContactForm={() => setShowContactForm(false)} />
         </div>
       )}
       
-      {/* Indicadores de sección */}
-      <div className="fixed bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
-        {Array.from({ length: totalSections }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSection(index)}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-500 ${
-              currentSection === index 
-                ? (currentSection === 0 ? 'bg-white scale-125' : 'bg-black scale-125') // Hero: blanco, otras: negro
-                : (currentSection === 0 ? 'bg-white bg-opacity-50 hover:bg-opacity-75' : 'bg-black bg-opacity-50 hover:bg-opacity-75')
-            }`}
-          />
-        ))}
-      </div>
+      {/* Indicadores de sección - Solo se muestran cuando NO está el formulario */}
+      {!showContactForm && (
+        <div className="fixed bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
+          {Array.from({ length: totalSections }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSection(index)}
+              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-500 ${
+                currentSection === index 
+                  ? (currentSection === 0 ? 'bg-white scale-125' : 'bg-black scale-125') // Hero: blanco, otras: negro
+                  : (currentSection === 0 ? 'bg-white bg-opacity-50 hover:bg-opacity-75' : 'bg-black bg-opacity-50 hover:bg-opacity-75')
+              }`}
+            />
+          ))}
+        </div>
+      )}
       {showAdminPanel && <AdminPanel onClose={() => setShowAdminPanel(false)} />}
     </div>
   )

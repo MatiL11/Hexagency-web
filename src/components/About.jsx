@@ -8,67 +8,46 @@ const About = () => {
   const teamMembers = [
     {
       name: "Fernando Ramírez",
-      position: "Director - Estratega Financiero e Innovación Empresarial",
+      position: "Director - Estratega Financiero & Especialista en Modelos Digitales",
       icon: Crown,
       image: FernandoRamirezImg,
       isDirector: true
     },
     {
-      name: "Yzak García",
-      position: "Asesor Bursátil e Inmobiliario",
-      icon: Briefcase,
-      image: YzakGarciaImg
-    },
-    {
-      name: "Jesús Arias",
-      position: "Asesor SAT y Contaduría Pública",
-      icon: Briefcase
-    },
-    {
-      name: "Andre De Alba",
-      position: "Asesor Bursátil",
-      icon: Briefcase
-    },
-    {
-      name: "Tadeo B.",
-      position: "Programador Analista / Diseñador Web",
-      icon: Code
-    },
-    {
-      name: "Adrián T.",
-      position: "Ingeniero en Ciberseguridad",
-      icon: Shield
-    },
-    {
-      name: "Maximiliano Arroyo",
-      position: "Ingeniero en Software",
-      icon: Code
-    },
-    {
-      name: "Carlos J.",
-      position: "Diseñador UX/UI",
-      icon: Palette
-    },
-    {
-      name: "Luna A.",
-      position: "Estratega de Contenido Digital",
-      icon: PenTool
-    },
-    {
       name: "Alesh Ancira",
-      position: "Asesor en Imagen y Presencia Digital",
+      position: "Consultora en Posicionamiento Digital & Asesora de Imagen",
       icon: Camera,
       image: AleshAnciraImg
     },
     {
-      name: "L. Enrique Ramírez",
-      position: "Event Project Manager - Administrador",
-      icon: Users,
-      image: EnriqueRamirezImg
+      name: "Yzak García",
+      position: "Consultor en Real Estate & Asesor Bursátil",
+      icon: Briefcase,
+      image: YzakGarciaImg
     },
     {
-      name: "Leonardo Ramírez V",
-      position: "Drone Operator & Video Producer",
+      name: "Maximiliano Arroyo",
+      position: "Ingeniero en Software & Desarrollador Full Stack",
+      icon: Code
+    },
+    {
+      name: "Tadeo Barrera",
+      position: "Programador Analista & Diseñador Web",
+      icon: Code
+    },
+    {
+      name: "Adrián Téllez",
+      position: "Ingeniero en Ciberseguridad & Especialista en Protección de Datos",
+      icon: Shield
+    },
+    {
+      name: "Jesús Arias N.",
+      position: "Contador Público & Consultor Fiscal",
+      icon: Briefcase
+    },
+    {
+      name: "Leonardo Ramírez B.",
+      position: "Programador, Operador de Drones & Productor Audiovisual",
       icon: Video
     }
   ]
@@ -85,34 +64,28 @@ const About = () => {
           <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto px-2 mb-4 sm:mb-2">
             
               En Hexagency creemos que cualquier empresa puede evolucionar si combina estrategia, tecnología y visión.
-            Transformamos negocios físicos en modelos digitales rentables, automatizados y listos para escalar.
-            Nuestro trabajo une finanzas, software y estrategia real para lograr resultados medibles y sostenibles.
           </p>
         </div>
 
         {/* Director Section */}
-        <div className="mb-4 sm:mb-6">
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6">
-            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              {/* Director Image */}
+        <div className="mb-4 sm:mb-6 flex justify-center">
+            <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg shadow-md p-4 sm:p-5 hover:shadow-lg transition-shadow duration-300 w-full max-w-sm min-h-[160px] flex flex-col">
+            {/* Director Image */}
+            <div className="flex-shrink-0">
               <img 
                 src={FernandoRamirezImg} 
                 alt="Fernando Ramírez" 
-                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover flex-shrink-0 border-2 border-gray-300"
+                className="w-18 h-18 sm:w-16 sm:w-18 sm:h-18 mx-auto mb-3 rounded-full object-cover border border-gray-300"
               />
-              
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2">
-                  Fernando Ramírez
-                </h3>
-                <p className="text-sm sm:text-base text-gray-700 mb-2 sm:mb-3">
-                  Director - Estratega Financiero e Innovación Empresarial
-                </p>
-                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  Líder visionario con más de una década de experiencia en transformación digital empresarial. 
-                  Especialista en estrategias de crecimiento, automatización de procesos y optimización de modelos de negocio.
-                </p>
-              </div>
+            </div>
+            
+            <div className="text-center flex-1 flex flex-col justify-center">
+              <h3 className="text-xs sm:text-sm font-bold text-black mb-2">
+                {teamMembers[0].name}
+              </h3>
+              <p className="text-xs text-gray-600 leading-relaxed">
+                {teamMembers[0].position}
+              </p>
             </div>
           </div>
         </div>
@@ -120,7 +93,7 @@ const About = () => {
         {/* Team Section */}
         <div className="flex-1 flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold text-black text-center mb-3 sm:mb-4">
-            EQUIPO HEXAGENCY
+            EQUIPO DIRECTIVO Y CONSULTORES ESPECIALIZADOS
           </h3>
           
           {/* Vista para Móviles - Grid único sin espacios vacíos */}
@@ -128,25 +101,27 @@ const About = () => {
             {teamMembers.slice(1).map((member, index) => {
               const IconComponent = member.icon
               return (
-                <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
+                <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300 min-h-[120px] flex flex-col">
                   {/* Team Member Image or Icon */}
-                  {member.image ? (
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
-                    />
-                  ) : (
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
-                    </div>
-                  )}
+                  <div className="flex-shrink-0">
+                    {member.image ? (
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                      </div>
+                    )}
+                  </div>
                   
-                  <div className="text-center">
+                  <div className="text-center flex-1 flex flex-col justify-center">
                     <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
                       {member.name}
                     </h4>
-                    <p className="text-xs text-gray-600 leading-tight">
+                    <p className="text-xs text-gray-600 leading-relaxed">
                       {member.position}
                     </p>
                   </div>
@@ -155,32 +130,34 @@ const About = () => {
             })}
           </div>
 
-          {/* Vista para Monitores - Dos filas separadas (5 + 6) */}
+          {/* Vista para Monitores - Distribución 3-4 */}
           <div className="hidden lg:flex lg:flex-col gap-2 sm:gap-3 flex-1">
-            {/* Primera fila - 5 empleados */}
-            <div className="grid grid-cols-5 gap-2 sm:gap-3">
-              {teamMembers.slice(1, 6).map((member, index) => {
+            {/* Primera fila - 3 empleados */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 justify-items-center max-w-5xl mx-auto">
+              {teamMembers.slice(1, 4).map((member, index) => {
                 const IconComponent = member.icon
                 return (
-                  <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
+                  <div key={index} className="bg-white rounded-lg shadow-md p-3 sm:p-4 hover:shadow-lg transition-shadow duration-300 w-full max-w-xs min-h-[140px] flex flex-col">
                     {/* Team Member Image or Icon */}
-                    {member.image ? (
-                      <img 
-                        src={member.image} 
-                        alt={member.name} 
-                        className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
-                      </div>
-                    )}
+                    <div className="flex-shrink-0">
+                      {member.image ? (
+                        <img 
+                          src={member.image} 
+                          alt={member.name} 
+                          className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                          <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                        </div>
+                      )}
+                    </div>
                     
-                    <div className="text-center">
-                      <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
+                    <div className="text-center flex-1 flex flex-col justify-center">
+                      <h4 className="text-xs sm:text-sm font-bold text-black mb-2">
                         {member.name}
                       </h4>
-                      <p className="text-xs text-gray-600 leading-tight">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         {member.position}
                       </p>
                     </div>
@@ -189,30 +166,32 @@ const About = () => {
               })}
             </div>
 
-            {/* Segunda fila - 6 empleados */}
-            <div className="grid grid-cols-6 gap-2 sm:gap-3">
-              {teamMembers.slice(6).map((member, index) => {
+            {/* Segunda fila - 4 empleados */}
+            <div className="grid grid-cols-4 gap-2 sm:gap-3 justify-items-center">
+              {teamMembers.slice(4).map((member, index) => {
                 const IconComponent = member.icon
                 return (
-                  <div key={index + 5} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
+                  <div key={index + 3} className="bg-white rounded-lg shadow-md p-3 sm:p-4 hover:shadow-lg transition-shadow duration-300 w-full max-w-sm min-h-[140px] flex flex-col">
                     {/* Team Member Image or Icon */}
-                    {member.image ? (
-                      <img 
-                        src={member.image} 
-                        alt={member.name} 
-                        className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
-                      />
-                    ) : (
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
-                      </div>
-                    )}
+                    <div className="flex-shrink-0">
+                      {member.image ? (
+                        <img 
+                          src={member.image} 
+                          alt={member.name} 
+                          className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                          <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                        </div>
+                      )}
+                    </div>
                     
-                    <div className="text-center">
-                      <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
+                    <div className="text-center flex-1 flex flex-col justify-center">
+                      <h4 className="text-xs sm:text-sm font-bold text-black mb-2">
                         {member.name}
                       </h4>
-                      <p className="text-xs text-gray-600 leading-tight">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         {member.position}
                       </p>
                     </div>
@@ -220,6 +199,7 @@ const About = () => {
                 )
               })}
             </div>
+
           </div>
         </div>
 
