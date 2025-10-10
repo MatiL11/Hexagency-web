@@ -100,8 +100,8 @@ const Hero = ({ onShowContactForm }) => {
         >
           <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
             Somos especialistas en transformar negocios físicos en negocios rentables digitales. 
-            El trabajo lo hacemos a través de <span className="text-white font-semibold">Sistemas</span> / 
-            <span className="text-white font-semibold"> Estrategias Digitales</span> / 
+            El trabajo lo hacemos a través de <span className="text-white font-semibold">Sistemas</span>, 
+            <span className="text-white font-semibold"> Estrategias Digitales</span> y 
             <span className="text-white font-semibold"> Software</span> rentables. 
             Nuestro enfoque combina <span className="text-white font-semibold">estrategia</span>, 
             <span className="text-white font-semibold"> innovación</span> y 
