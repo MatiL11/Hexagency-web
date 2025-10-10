@@ -147,7 +147,7 @@ const ContactForm = ({ onHideContactForm }) => {
         </div>
       </div>
 
-      {/* Flecha para volver al hero */}
+      {/* Botón para móviles - Esquina inferior derecha */}
       <button
         onClick={() => {
           // Primero hacer scroll suave
@@ -161,10 +161,30 @@ const ContactForm = ({ onHideContactForm }) => {
             onHideContactForm && onHideContactForm()
           }, 800)
         }}
-        className="fixed bottom-4 right-4 sm:absolute sm:top-16 sm:right-4 bg-black text-white p-3 sm:p-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-110 shadow-lg z-50"
+        className="lg:hidden fixed bottom-4 right-4 bg-black text-white p-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-110 shadow-lg z-50"
         title="Volver al inicio"
       >
-        <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronUp className="w-5 h-5" />
+      </button>
+
+      {/* Botón para desktop - Parte superior derecha */}
+      <button
+        onClick={() => {
+          // Primero hacer scroll suave
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          })
+          
+          // Después de un delay, ocultar el formulario
+          setTimeout(() => {
+            onHideContactForm && onHideContactForm()
+          }, 800)
+        }}
+        className="hidden lg:block absolute top-16 right-4 bg-black text-white p-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-110 shadow-lg z-10"
+        title="Volver al inicio"
+      >
+        <ChevronUp className="w-6 h-6" />
       </button>
       
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-32">
