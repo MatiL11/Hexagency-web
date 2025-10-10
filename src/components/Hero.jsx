@@ -11,9 +11,9 @@ const Hero = ({ onShowContactForm }) => {
   const [isTransitioning, setIsTransitioning] = useState(false)
   
   const heroTexts = [
-    "Cualquier modelo de negocio puede ser digital.",
-    "Te asesoramos para que ganes de ello.",
-    "Transformamos tu negocio tradicional en digital."
+    "Transformamos tu negocio tradicional en digital",
+    "Nosotros lo desarrollamos de 0",
+    "Reserva tu cita con Hexagency"
   ]
 
   useEffect(() => {
@@ -99,11 +99,13 @@ const Hero = ({ onShowContactForm }) => {
           }`}
         >
           <p className="text-sm sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            Somos especialistas en transformar negocios tradicionales en estrategias digitales 
-            rentables. Nuestro enfoque combina <span className="text-white font-semibold">estrategia</span>, 
+            Somos especialistas en transformar negocios físicos en negocios rentables digitales. 
+            El trabajo lo hacemos a través de <span className="text-white font-semibold">Sistemas</span> / 
+            <span className="text-white font-semibold"> Estrategias Digitales</span> / 
+            <span className="text-white font-semibold"> Software</span> rentables. 
+            Nuestro enfoque combina <span className="text-white font-semibold">estrategia</span>, 
             <span className="text-white font-semibold"> innovación</span> y 
-            <span className="text-white font-semibold"> acompañamiento</span> para generar 
-            <span className="text-white font-semibold"> resultados reales</span>.
+            <span className="text-white font-semibold"> acompañamiento personal</span> de tu equipo. 
           </p>
         </div>
 
@@ -146,7 +148,7 @@ const Hero = ({ onShowContactForm }) => {
         </div>
 
         {/* Logo carousel */}
-        <div className="mt-8 sm:mt-12 md:mt-16 pt-4 sm:pt-6 md:pt-8">
+        <div className="mt-4 sm:mt-6 md:mt-8 pt-4 sm:pt-6 md:pt-8">
           <LogoCarousel
             title="Confían en nosotros"
             speed={30}
