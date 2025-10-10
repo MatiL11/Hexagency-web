@@ -1,4 +1,8 @@
 import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool, Camera, Video } from 'lucide-react'
+import FernandoRamirezImg from '../assets/FernandoRamirez.jpeg'
+import YzakGarciaImg from '../assets/YzakGarcía.jpeg'
+import AleshAnciraImg from '../assets/AleshAncira.jpeg'
+import EnriqueRamirezImg from '../assets/EnriqueRamirez.jpeg'
 
 const About = () => {
   const teamMembers = [
@@ -6,12 +10,14 @@ const About = () => {
       name: "Fernando Ramírez",
       position: "Director - Estratega Financiero e Innovación Empresarial",
       icon: Crown,
+      image: FernandoRamirezImg,
       isDirector: true
     },
     {
       name: "Yzak García",
       position: "Asesor Bursátil e Inmobiliario",
-      icon: Briefcase
+      icon: Briefcase,
+      image: YzakGarciaImg
     },
     {
       name: "Jesús Arias",
@@ -51,12 +57,14 @@ const About = () => {
     {
       name: "Alesh Ancira",
       position: "Asesor en Imagen y Presencia Digital",
-      icon: Camera
+      icon: Camera,
+      image: AleshAnciraImg
     },
     {
       name: "L. Enrique Ramírez",
       position: "Event Project Manager - Administrador",
-      icon: Users
+      icon: Users,
+      image: EnriqueRamirezImg
     },
     {
       name: "Leonardo Ramírez V",
@@ -86,10 +94,12 @@ const About = () => {
         <div className="mb-4 sm:mb-6">
           <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              {/* Placeholder for Director Image */}
-              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gray-300 rounded-full flex items-center justify-center flex-shrink-0">
-                <Crown className="w-10 h-10 sm:w-12 sm:h-12 text-gray-500" />
-              </div>
+              {/* Director Image */}
+              <img 
+                src={FernandoRamirezImg} 
+                alt="Fernando Ramírez" 
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover flex-shrink-0 border-2 border-gray-300"
+              />
               
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-black mb-1 sm:mb-2">
@@ -119,10 +129,18 @@ const About = () => {
               const IconComponent = member.icon
               return (
                 <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
-                  {/* Placeholder for Team Member Image */}
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
-                    <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
-                  </div>
+                  {/* Team Member Image or Icon */}
+                  {member.image ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                    </div>
+                  )}
                   
                   <div className="text-center">
                     <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
@@ -145,10 +163,18 @@ const About = () => {
                 const IconComponent = member.icon
                 return (
                   <div key={index} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
-                    {/* Placeholder for Team Member Image */}
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
-                    </div>
+                    {/* Team Member Image or Icon */}
+                    {member.image ? (
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                      </div>
+                    )}
                     
                     <div className="text-center">
                       <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
@@ -169,10 +195,18 @@ const About = () => {
                 const IconComponent = member.icon
                 return (
                   <div key={index + 5} className="bg-white rounded-lg shadow-md p-2 sm:p-3 hover:shadow-lg transition-shadow duration-300">
-                    {/* Placeholder for Team Member Image */}
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
-                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
-                    </div>
+                    {/* Team Member Image or Icon */}
+                    {member.image ? (
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 rounded-full object-cover border border-gray-300"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto mb-2 bg-gray-200 rounded-full flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-gray-600" />
+                      </div>
+                    )}
                     
                     <div className="text-center">
                       <h4 className="text-xs sm:text-sm font-bold text-black mb-1">
