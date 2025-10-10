@@ -191,33 +191,19 @@ const ContactForm = ({ onHideContactForm }) => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Formulario completo */}
           <form onSubmit={handleSubmit} className="lg:col-span-4 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
-            {/* Header a la izquierda */}
-            <div className="lg:col-span-1 flex flex-col justify-center mb-6 lg:mb-0">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-3">
-                Consulta Gratuita
-              </h2>
-              <div className="h-1 w-16 sm:w-24 bg-black mb-4"></div>
-              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
-                Completa este formulario y te contactaremos para una consulta personalizada sobre tu negocio
-              </p>
-              
-              {/* Botón de envío destacado */}
-              <div className="w-full">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-black hover:bg-gray-800 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base"
-                >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
-                </button>
-                <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 text-center">
-                  * Campos obligatorios
+            {/* Contenedor agrupado: Texto + Formulario + Botón */}
+            <div className="lg:col-span-4">
+              {/* Texto centrado arriba del formulario */}
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black mb-3">
+                  Consulta Gratuita
+                </h2>
+                <div className="h-1 w-16 sm:w-24 bg-black mx-auto mb-4"></div>
+                <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 max-w-2xl mx-auto">
+                  Completa este formulario y te contactaremos para una consulta personalizada sobre tu negocio
                 </p>
               </div>
-            </div>
-
-            {/* Formulario en un solo contenedor */}
-            <div className="lg:col-span-3">
+              {/* Formulario */}
               <div className="bg-black p-4 sm:p-6 rounded-lg shadow-lg border border-gray-800">
                 <div className="flex items-center mb-4 sm:mb-6">
                   <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-white rounded-full mr-3 sm:mr-4"></div>
@@ -331,6 +317,20 @@ const ContactForm = ({ onHideContactForm }) => {
                     />
                   </div>
                 </div>
+              </div>
+              
+              {/* Botón de envío justo debajo del formulario */}
+              <div className="mt-2 sm:mt-2 text-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-black hover:bg-gray-800 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base"
+                >
+                  {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
+                </button>
+                <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">
+                  * Campos obligatorios
+                </p>
               </div>
             </div>
           </form>
