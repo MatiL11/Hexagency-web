@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { ChevronUp } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ChevronUp, Zap, MessageCircle } from 'lucide-react'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +19,33 @@ const ContactForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  
+  // Estado para el contador del banner
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    minutes: 59,
+    seconds: 22
+  })
+
+  // Efecto para el contador regresivo
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prevTime => {
+        if (prevTime.seconds > 0) {
+          return { ...prevTime, seconds: prevTime.seconds - 1 }
+        } else if (prevTime.minutes > 0) {
+          return { ...prevTime, minutes: prevTime.minutes - 1, seconds: 59 }
+        } else if (prevTime.days > 0) {
+          return { days: prevTime.days - 1, minutes: 59, seconds: 59 }
+        } else {
+          // Reiniciar el contador cuando llegue a cero
+          return { days: 0, minutes: 59, seconds: 22 }
+        }
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
 
   const handleChange = (e) => {
     setFormData({
@@ -83,6 +110,52 @@ const ContactForm = () => {
 
   return (
     <section id="contacto" className="min-h-screen bg-white flex items-center justify-center relative py-8 sm:py-12">
+      {/* Banner de WhatsApp - Contenedor centrado */}
+      <div className="absolute top-16 z-20 max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <div className="bg-black rounded-lg p-3 sm:p-4 shadow-lg">
+          <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0 sm:space-x-6">
+            {/* Sección izquierda - Icono y texto */}
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              <span className="text-white font-medium text-xs sm:text-sm md:text-base">
+                ¡Agenda tu asesoramiento express! Es por tiempo limitado:
+              </span>
+            </div>
+            
+            {/* Sección central - Contador */}
+            <div className="flex items-center space-x-1 sm:space-x-2">
+              <div className="bg-gray-800 rounded-lg px-2 sm:px-3 py-1 sm:py-2 text-center">
+                <div className="text-white text-sm sm:text-lg font-bold">
+                  {String(timeLeft.days).padStart(2, '0')}
+                </div>
+                <div className="text-white text-xs">DÍAS</div>
+              </div>
+              <div className="bg-gray-800 rounded-lg px-2 sm:px-3 py-1 sm:py-2 text-center">
+                <div className="text-white text-sm sm:text-lg font-bold">
+                  {String(timeLeft.minutes).padStart(2, '0')}
+                </div>
+                <div className="text-white text-xs">MIN</div>
+              </div>
+              <div className="bg-gray-800 rounded-lg px-2 sm:px-3 py-1 sm:py-2 text-center">
+                <div className="text-white text-sm sm:text-lg font-bold">
+                  {String(timeLeft.seconds).padStart(2, '0')}
+                </div>
+                <div className="text-white text-xs">SEG</div>
+              </div>
+            </div>
+            
+            {/* Sección derecha - Botón de WhatsApp */}
+            <button 
+              className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 transition-colors"
+              onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+            >
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="font-medium text-xs sm:text-sm">Contáctanos</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Flecha para volver al hero */}
       <button
         onClick={() => {
@@ -97,7 +170,7 @@ const ContactForm = () => {
         <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />
       </button>
       
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-32">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Formulario completo */}
           <form onSubmit={handleSubmit} className="lg:col-span-4 grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
