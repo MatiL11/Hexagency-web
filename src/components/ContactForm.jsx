@@ -147,7 +147,10 @@ const ContactForm = () => {
             {/* Sección derecha - Botón de WhatsApp */}
             <button 
               className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 transition-colors"
-              onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+              onClick={() => {
+                const message = encodeURIComponent('Hola! Estoy interesado en el asesoramiento express de Hexagency. ¿Podrían contactarme?')
+                window.open(`https://wa.me/523511240636?text=${message}`, '_blank')
+              }}
             >
               <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="font-medium text-xs sm:text-sm">Contáctanos</span>
