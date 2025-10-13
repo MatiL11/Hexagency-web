@@ -3,44 +3,62 @@ import {
   EntrepreneurLogo, 
   BloombergLogo, 
   GQLogo, 
-  CNNLogo, 
-  BBCLogo, 
   TWSJLogo, 
-  BusinessInsiderLogo, 
   FastCompanyLogo, 
   YahooFinanceLogo, 
-  ElEconomistaLogo, 
-  MilenioLogo, 
-  ElUniversalLogo, 
-  VogueLogo, 
-  TechCrunchLogo, 
-  FinancialTimesLogo, 
-  FortuneLogo, 
-  ReutersLogo, 
-  MarketWatchLogo, 
+  TechCrunchLogo,
+  LosAngelesTimesLogo,
+  RollingStoneLogo,
+  VentureBeatLogo,
+  WWDLogo,
+  BillboardLogo,
+  HarpersBazaarLogo,
+  CosmopolitanLogo,
+  ElleLogo,
+  GlamourLogo,
+  AppleNewsLogo,
+  GoogleNewsLogo,
+  TheRealDealLogo,
+  CoinDeskLogo,
+  ArabianBusinessLogo,
+  UsWeeklyLogo,
+  ElFinancieroLogo,
+  TravelLeisureLogo,
+  EsquireLogo,
 } from '../assets'
 
 const MediaSection = () => {
   const mediaLogos = [
-    { name: 'Forbes', logo: ForbesLogo },
-    { name: 'Entrepreneur', logo: EntrepreneurLogo },
-    { name: 'Bloomberg', logo: BloombergLogo },
-    { name: 'GQ', logo: GQLogo },
-    { name: 'CNN', logo: CNNLogo },
-    { name: 'BBC News', logo: BBCLogo },
     { name: 'The Wall Street Journal', logo: TWSJLogo },
-    { name: 'Business Insider', logo: BusinessInsiderLogo },
-    { name: 'Fast Company', logo: FastCompanyLogo },
-    { name: 'Yahoo Finance', logo: YahooFinanceLogo },
-    { name: 'El Economista', logo: ElEconomistaLogo },
-    { name: 'Milenio', logo: MilenioLogo },
-    { name: 'El Universal', logo: ElUniversalLogo },
-    { name: 'Vogue Business', logo: VogueLogo },
+    { name: 'Bloomberg', logo: BloombergLogo },
+    { name: 'Forbes México', logo: ForbesLogo },
+    { name: 'Los Angeles Times', logo: LosAngelesTimesLogo },
+    { name: 'Variety', logo: null },
+    { name: 'Rolling Stone', logo: RollingStoneLogo },
+    { name: 'Entrepreneur', logo: EntrepreneurLogo },
     { name: 'TechCrunch', logo: TechCrunchLogo },
-    { name: 'Financial Times', logo: FinancialTimesLogo },
-    { name: 'Fortune', logo: FortuneLogo },
-    { name: 'Reuters', logo: ReutersLogo },
-    { name: 'MarketWatch', logo: MarketWatchLogo },
+    { name: 'VentureBeat', logo: VentureBeatLogo },
+    { name: 'Yahoo Finance', logo: YahooFinanceLogo },
+    { name: 'E! News', logo: null },
+    { name: 'WWD', logo: WWDLogo },
+    { name: 'Billboard', logo: BillboardLogo },
+    { name: "Harper's Bazaar", logo: HarpersBazaarLogo },
+    { name: 'Cosmopolitan', logo: CosmopolitanLogo },
+    { name: 'Elle', logo: ElleLogo },
+    { name: 'Glamour', logo: GlamourLogo },
+    { name: 'GQ', logo: GQLogo },
+    { name: 'Fast Company', logo: FastCompanyLogo },
+    { name: 'Apple News', logo: AppleNewsLogo },
+    { name: 'Google News', logo: GoogleNewsLogo },
+    { name: 'The Real Deal', logo: TheRealDealLogo },
+    { name: 'CoinDesk', logo: CoinDeskLogo },
+    { name: 'Arabian Business', logo: ArabianBusinessLogo },
+    { name: 'Paper Magazine', logo: null },
+    { name: 'Us Weekly', logo: UsWeeklyLogo },
+    { name: 'El Financiero', logo: ElFinancieroLogo },
+    { name: 'EL CEO', logo: null },
+    { name: 'Travel + Leisure', logo: TravelLeisureLogo },
+    { name: 'Esquire', logo: EsquireLogo },
   ]
 
   return (
@@ -58,31 +76,40 @@ const MediaSection = () => {
         </div>
 
         {/* Media Logos Grid */}
-        <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 gap-4 sm:gap-6 md:gap-8">
+        <div className="flex-1 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2 sm:gap-3 md:gap-4">
           {mediaLogos.map((media, index) => (
             <div 
               key={index} 
-              className="flex items-center justify-center p-3 sm:p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="flex items-center justify-center p-2 sm:p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[60px]"
             >
-              <img 
-                src={media.logo} 
-                alt={media.name}
-                className="max-h-8 sm:max-h-10 md:max-h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                title={media.name}
-              />
+              {media.logo ? (
+                <img 
+                  src={media.logo} 
+                  alt={media.name}
+                  className="max-h-6 sm:max-h-7 md:max-h-8 w-auto grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
+                  title={media.name}
+                />
+              ) : (
+                <div className="text-center px-1">
+                  <p className="text-xs font-bold text-gray-800 leading-tight">
+                    {media.name}
+                  </p>
+                  <div className="mt-1 h-0.5 w-6 bg-gray-300 mx-auto"></div>
+                </div>
+              )}
             </div>
           ))}
         </div>
 
         {/* Media Names List */}
-        <div className="mt-4 sm:mt-6">
-          <div className="bg-white rounded-lg p-6 sm:p-8 shadow-sm">
-            <h3 className="text-lg sm:text-xl font-semibold text-black mb-4 text-center">
+        <div className="mt-3 sm:mt-4">
+          <div className="bg-white rounded-lg p-4 sm:p-6 shadow-sm">
+            <h3 className="text-base sm:text-lg font-semibold text-black mb-3 text-center">
               Medios de Prestigio Internacional
             </h3>
             <div className="text-center">
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                Forbes · Entrepreneur · Bloomberg · GQ · CNN · BBC News · The Wall Street Journal · Business Insider · Fast Company · Yahoo Finance · Expansión · El Economista · Milenio · El Universal · Reforma · Vogue Business · INC · TechCrunch · Rolling Stone Business · Financial Times · Fortune · The Guardian · Reuters · LinkedIn News LATAM · MarketWatch · Forbes Centroamérica · Business Mexico.
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                The Wall Street Journal · Bloomberg · Forbes México · Los Angeles Times · Variety · Rolling Stone · Entrepreneur · TechCrunch · VentureBeat · Yahoo Finance · E! News · WWD · Billboard · Harper's Bazaar · Cosmopolitan · Elle · Glamour · GQ · Fast Company · Apple News · Google News · The Real Deal · CoinDesk · Arabian Business · Paper Magazine · Us Weekly · El Financiero · EL CEO · Travel + Leisure · Esquire
               </p>
             </div>
           </div>

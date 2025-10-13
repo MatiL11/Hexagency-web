@@ -7,8 +7,9 @@ import EnriqueRamirezImg from '../assets/EnriqueRamirez.jpeg'
 const About = () => {
   const teamMembers = [
     {
-      name: "Fernando Ramírez",
-      position: "Director - Estratega Financiero & Especialista en Modelos Digitales",
+      name: "Fernando Ramírez López",
+      position: "Director",
+      subtitle: "Asesor Bursátil y Estratega en Transformación Digital",
       icon: Crown,
       image: FernandoRamirezImg,
       isDirector: true
@@ -26,29 +27,30 @@ const About = () => {
       image: YzakGarciaImg
     },
     {
-      name: "Maximiliano Arroyo",
-      position: "Ingeniero en Software & Desarrollador Full Stack",
+      name: "Enrique Ramírez",
+      position: "Operador de Drones & Productor Audiovisual",
+      icon: Video,
+      image: EnriqueRamirezImg
+    },
+    {
+      name: "Leandro Sandoval",
+      position: "Programador Full Stack",
       icon: Code
-    },
-    {
-      name: "Tadeo Barrera",
-      position: "Programador Analista & Diseñador Web",
-      icon: Code
-    },
-    {
-      name: "Adrián Téllez",
-      position: "Ingeniero en Ciberseguridad & Especialista en Protección de Datos",
-      icon: Shield
-    },
-    {
-      name: "Jesús Arias N.",
-      position: "Contador Público & Consultor Fiscal",
-      icon: Briefcase
     },
     {
       name: "Leonardo Ramírez B.",
-      position: "Programador, Operador de Drones & Productor Audiovisual",
+      position: "Programador Full Stack y Drone Audiovisual Operator",
       icon: Video
+    },
+    {
+      name: "Jorge Valdés Pinos",
+      position: "Contador Público y Consultor Financiero",
+      icon: Briefcase
+    },
+    {
+      name: "Adrian Tellez",
+      position: "Ing en Ciberseguridad",
+      icon: Shield
     }
   ]
 
@@ -74,7 +76,7 @@ const About = () => {
             <div className="flex-shrink-0">
               <img 
                 src={FernandoRamirezImg} 
-                alt="Fernando Ramírez" 
+                alt="Fernando Ramírez López" 
                 className="w-18 h-18 sm:w-16 sm:w-18 sm:h-18 mx-auto mb-3 rounded-full object-cover border border-gray-300"
               />
             </div>
@@ -83,9 +85,14 @@ const About = () => {
               <h3 className="text-xs sm:text-sm font-bold text-black mb-2">
                 {teamMembers[0].name}
               </h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
+              <p className="text-xs text-gray-700 font-semibold leading-relaxed mb-1">
                 {teamMembers[0].position}
               </p>
+              {teamMembers[0].subtitle && (
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  {teamMembers[0].subtitle}
+                </p>
+              )}
             </div>
           </div>
         </div>

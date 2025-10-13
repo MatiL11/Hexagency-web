@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react'
 import BloombergLogo from '../assets/BloombergLogo.png'
-import CNNLogo from '../assets/CNNLogo.png'
 import EntrepreneurLogo from '../assets/EntrepreneurLogo.png'
 import ForbesLogo from '../assets/forbesLogo.png'
 import GQLogo from '../assets/GQLogo.png'
-import BBCLogo from '../assets/BBCLogo.png'
 import TWSJLogo from '../assets/TWSJLogo.png'
-import BILogo from '../assets/BILogo.png'
 
 const LogoCarousel = ({ 
   title = "Confían en nosotros", 
@@ -24,13 +21,10 @@ const LogoCarousel = ({
 
   const logos = [
     { src: BloombergLogo, alt: "Bloomberg" },
-    { src: CNNLogo, alt: "CNN" },
     { src: EntrepreneurLogo, alt: "Entrepreneur" },
     { src: ForbesLogo, alt: "Forbes" },
     { src: GQLogo, alt: "GQ" },
-    { src: BBCLogo, alt: "BBC" },
     { src: TWSJLogo, alt: "TWSJ" },
-    { src: BILogo, alt: "BI" }
   ]
 
   return (

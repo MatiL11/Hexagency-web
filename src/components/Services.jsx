@@ -262,7 +262,7 @@ const About = () => {
                           <p className="text-gray-600 text-xs sm:text-sm leading-tight mb-2 sm:mb-3">{plan.description}</p>
                         </div>
 
-                        <ul className={`space-y-1 sm:space-y-1.5 mb-4 sm:mb-5 max-h-28 sm:max-h-32 overflow-y-auto`}>
+                        <ul className={`space-y-1 sm:space-y-1.5 mb-4 sm:mb-5 max-h-28 sm:max-h-32 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-gray-500 pr-2`}>
                           {plan.features.map((feature, index) => (
                             <li key={index} className="flex items-start">
                               <Check className="text-green-500 mr-2 w-3 h-3 flex-shrink-0 mt-0.5" />

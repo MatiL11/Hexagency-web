@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ChevronUp, Zap, MessageCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 
 const ContactForm = ({ onHideContactForm }) => {
   const [formData, setFormData] = useState({
@@ -52,14 +53,51 @@ const ContactForm = ({ onHideContactForm }) => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simular envío del formulario
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
-    // Aquí iría la lógica para enviar los datos al backend
-    console.log('Datos del formulario:', formData)
+    try {
+      // Configuración de EmailJS
+      // INSTRUCCIONES: Reemplaza estos valores con los que obtienes de emailjs.com
+      // 1. Service ID: Obtenido al crear el servicio SMTP de GoDaddy
+      // 2. Template ID: Obtenido al crear el template de email
+      // 3. Public Key: Obtenido en Account → General
+      const serviceID = 'TU_SERVICE_ID' // Ej: 'service_abc123'
+      const templateID = 'TU_TEMPLATE_ID' // Ej: 'template_xyz789'
+      const publicKey = 'TU_PUBLIC_KEY' // Ej: 'AbC123XyZ'
+      
+      // Preparar los datos para el email
+      const templateParams = {
+        to_email: 'fernando@hexagency.mx',
+        empresa: formData.empresa,
+        telefono: formData.telefono,
+        tipo_negocio: formData.tipoNegocio,
+        empleados: formData.empleados,
+        fecha_hora: formData.fechaHoraPreferida,
+        problema: formData.problema,
+        reply_to: formData.telefono
+      }
+      
+      // Enviar email
+      await emailjs.send(serviceID, templateID, templateParams, publicKey)
+      
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+      
+      // Limpiar formulario
+      setFormData({
+        empresa: '',
+        telefono: '',
+        tipoNegocio: '',
+        empleados: '',
+        fechaHoraPreferida: '',
+        problema: ''
+      })
+      
+    } catch (error) {
+      console.error('Error enviando email:', error)
+      setIsSubmitting(false)
+      
+      // Mostrar mensaje de error al usuario
+      alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.')
+    }
   }
 
   if (isSubmitted) {
