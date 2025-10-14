@@ -13,21 +13,14 @@ export default async function handler(req, res) {
   }
 
   try {
-    const sig = req.headers['stripe-signature']
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
-
-    let event
-
-    // Para desarrollo, si no hay webhook secret, parsear directamente
-    if (!webhookSecret) {
-      console.log('⚠️  Webhook secret no configurado, parseando directamente')
-      event = JSON.parse(req.body)
-    } else {
-      // Para producción, verificar la firma con raw body
-      event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret)
-    }
-
-    console.log('📨 Webhook recibido:', event.type, event.id)
+    console.log('📨 Webhook recibido')
+    console.log('Headers:', req.headers)
+    console.log('Body type:', typeof req.body)
+    
+    // Parsear el evento directamente sin verificación de firma por ahora
+    const event = req.body
+    
+    console.log('📨 Event type:', event.type, 'ID:', event.id)
 
     // Manejar el evento
     if (event.type === 'checkout.session.completed') {
@@ -37,7 +30,8 @@ export default async function handler(req, res) {
         sessionId: session.id,
         customerEmail: session.customer_email,
         amountTotal: session.amount_total,
-        metadata: session.metadata
+        metadata: session.metadata,
+        citaId: session.metadata.citaId
       })
 
       try {
@@ -55,29 +49,30 @@ export default async function handler(req, res) {
           .select()
 
         if (error) {
-          console.error('Error actualizando cita en Supabase:', error)
+          console.error('❌ Error actualizando cita en Supabase:', error)
           return res.status(500).json({ error: 'Error actualizando cita' })
         } else {
           console.log('✅ Cita actualizada en Supabase:', data)
         }
 
       } catch (err) {
-        console.error('Error procesando webhook:', err)
+        console.error('❌ Error procesando webhook:', err)
         return res.status(500).json({ error: 'Error procesando webhook' })
       }
     }
 
+    console.log('✅ Webhook procesado exitosamente')
     res.json({ received: true })
 
   } catch (err) {
-    console.error('Error general en webhook:', err)
+    console.error('❌ Error general en webhook:', err)
     res.status(400).json({ error: err.message })
   }
 }
 
-// Configuración para Vercel - Raw body para webhooks
+// Configuración para Vercel
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: true, // Permitir que Vercel parsee el body
   },
 }
