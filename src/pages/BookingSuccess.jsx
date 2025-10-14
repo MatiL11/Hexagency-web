@@ -2,28 +2,15 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Check, Calendar, CreditCard, User, Phone, Mail } from 'lucide-react'
 
-const BookingSuccess = () => {
+const BookingSuccess = ({ bookingData, onClose }) => {
   const navigate = useNavigate()
-  const location = useLocation()
-  const [bookingData, setBookingData] = useState(null)
-
-  useEffect(() => {
-    // Extraer datos de la URL
-    const urlParams = new URLSearchParams(location.search)
-    
-    if (urlParams.get('success') === 'true') {
-      setBookingData({
-        plan: urlParams.get('plan') || 'No especificado',
-        email: urlParams.get('email') || 'No especificado',
-        fecha: urlParams.get('fecha') || 'No especificada',
-        hora: urlParams.get('hora') || 'No especificada',
-        citaId: urlParams.get('citaId') || 'No especificado'
-      })
-    }
-  }, [location])
 
   const handleBackToHome = () => {
-    navigate('/')
+    if (onClose) {
+      onClose()
+    } else {
+      navigate('/')
+    }
   }
 
   if (!bookingData) {
@@ -38,7 +25,7 @@ const BookingSuccess = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="p-6">
       <div className="max-w-3xl mx-auto">
         {/* Header de éxito */}
         <div className="text-center mb-8">

@@ -16,6 +16,34 @@ import BookingCanceled from './pages/BookingCanceled'
 const MainApp = () => {
   const [showAdminPanel, setShowAdminPanel] = useState(false)
   const [showContactForm, setShowContactForm] = useState(false)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [showCanceledModal, setShowCanceledModal] = useState(false)
+  const [bookingData, setBookingData] = useState(null)
+  const location = useLocation()
+
+  // Verificar si hay parámetros de éxito o cancelación en la URL
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search)
+    
+    if (urlParams.get('success') === 'true') {
+      setBookingData({
+        plan: urlParams.get('plan') || 'No especificado',
+        email: urlParams.get('email') || 'No especificado',
+        fecha: urlParams.get('fecha') || 'No especificada',
+        hora: urlParams.get('hora') || 'No especificada',
+        citaId: urlParams.get('citaId') || 'No especificado'
+      })
+      setShowSuccessModal(true)
+    } else if (urlParams.get('canceled') === 'true') {
+      setBookingData({
+        plan: urlParams.get('plan') || 'No especificado',
+        email: urlParams.get('email') || 'No especificado',
+        fecha: urlParams.get('fecha') || 'No especificada',
+        hora: urlParams.get('hora') || 'No especificada'
+      })
+      setShowCanceledModal(true)
+    }
+  }, [location])
 
   // Controlar scrollbar cuando se muestra el formulario
   useEffect(() => {
@@ -145,6 +173,30 @@ const MainApp = () => {
         </div>
       )}
       {showAdminPanel && <AdminPanel onClose={() => setShowAdminPanel(false)} />}
+      
+      {/* Modal de éxito */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <BookingSuccess 
+              bookingData={bookingData}
+              onClose={() => setShowSuccessModal(false)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Modal de cancelación */}
+      {showCanceledModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <BookingCanceled 
+              bookingData={bookingData}
+              onClose={() => setShowCanceledModal(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
