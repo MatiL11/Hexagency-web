@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Globe, ChevronDown } from 'lucide-react'
+import { AuthProvider } from './context/AuthContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -7,8 +9,9 @@ import Services from './components/Services'
 import MediaSection from './components/MediaSection'
 import ContactForm from './components/ContactForm'
 import AdminPanel from './components/AdminPanel'
+import BookingPage from './pages/BookingPage'
 
-function App() {
+const MainApp = () => {
   const [showAdminPanel, setShowAdminPanel] = useState(false)
   const [showContactForm, setShowContactForm] = useState(false)
 
@@ -95,8 +98,8 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Header />
-      
+      <Header onOpenAdminPanel={() => setShowAdminPanel(true)} />
+    
       {/* Contenedor horizontal con scroll */}
       <div 
         ref={scrollContainerRef}
@@ -141,6 +144,22 @@ function App() {
       )}
       {showAdminPanel && <AdminPanel onClose={() => setShowAdminPanel(false)} />}
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<MainApp />} />
+          <Route path="/booking" element={<BookingPage />} />
+        </Routes>
+        
+        {/* Modales fuera del contenedor principal para evitar problemas de overflow */}
+        <div id="modal-root"></div>
+      </AuthProvider>
+    </Router>
   )
 }
 

@@ -1,7 +1,9 @@
 import { Check, MessageCircle, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, CreditCard, Calendar } from 'lucide-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const About = () => {
+  const navigate = useNavigate()
   const [currentPlanIndex, setCurrentPlanIndex] = useState(0)
   const [selectedPlan, setSelectedPlan] = useState(1)
   const [expandedFaq, setExpandedFaq] = useState(null)
@@ -273,12 +275,29 @@ const About = () => {
 
                         {/* Botones de Acción */}
                         <div className="space-y-2 mb-2 sm:mb-4">
-                          <button className="w-full bg-black text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors hover:bg-gray-800 flex items-center justify-center">
+                          <button 
+                            onClick={() => {
+                              const planName = plan.name
+                              const planPrice = plan.price
+                              const message = encodeURIComponent(`Hola! Estoy interesado en comprar el plan ${planName} de ${planPrice} ${plan.currency}. ¿Podrían darme más información?`)
+                              window.open(`https://wa.me/523511240636?text=${message}`, '_blank')
+                            }}
+                            className="w-full bg-black text-white py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors hover:bg-gray-800 flex items-center justify-center"
+                          >
                             <CreditCard className="w-4 h-4 mr-2" />
                             Comprar el plan completo
                           </button>
                           
-                          <button className="w-full bg-gray-100 text-black py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors hover:bg-gray-200 flex items-center justify-center">
+                          <button 
+                            onClick={() => {
+                              console.log('Botón de reserva clickeado - Plan:', plan.name)
+                              // Guardar el plan seleccionado en localStorage
+                              localStorage.setItem('selectedPlan', plan.name)
+                              // Navegar a la página de reserva
+                              navigate(`/booking?plan=${encodeURIComponent(plan.name)}`)
+                            }}
+                            className="w-full bg-gray-100 text-black py-2.5 px-4 rounded-lg font-semibold text-sm transition-colors hover:bg-gray-200 flex items-center justify-center"
+                          >
                             <Calendar className="w-4 h-4 mr-2" />
                             Reservar una cita por $100 USD
                           </button>
@@ -401,6 +420,7 @@ const About = () => {
           </div>
         </div>
       </div>
+
     </section>
   )
 }
