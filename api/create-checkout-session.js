@@ -25,8 +25,8 @@ export default async function handler(req, res) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin}/booking?success=true&plan=${encodeURIComponent(plan)}&email=${encodeURIComponent(bookingData.email)}&fecha=${encodeURIComponent(bookingData.fechaPreferida)}&hora=${encodeURIComponent(bookingData.horaPreferida)}&citaId=${citaId}`,
-      cancel_url: `${req.headers.origin}/booking?canceled=true`,
+      success_url: `${req.headers.origin}/booking/success?success=true&plan=${encodeURIComponent(plan)}&email=${encodeURIComponent(bookingData.email)}&fecha=${encodeURIComponent(bookingData.fechaPreferida)}&hora=${encodeURIComponent(bookingData.horaPreferida)}&citaId=${citaId}`,
+      cancel_url: `${req.headers.origin}/booking/canceled?canceled=true&plan=${encodeURIComponent(plan)}&email=${encodeURIComponent(bookingData.email)}&fecha=${encodeURIComponent(bookingData.fechaPreferida)}&hora=${encodeURIComponent(bookingData.horaPreferida)}`,
       customer_email: bookingData.email,
       client_reference_id: citaId,
       metadata: {

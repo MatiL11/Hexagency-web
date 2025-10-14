@@ -10,6 +10,8 @@ import MediaSection from './components/MediaSection'
 import ContactForm from './components/ContactForm'
 import AdminPanel from './components/AdminPanel'
 import BookingPage from './pages/BookingPage'
+import BookingSuccess from './pages/BookingSuccess'
+import BookingCanceled from './pages/BookingCanceled'
 
 const MainApp = () => {
   const [showAdminPanel, setShowAdminPanel] = useState(false)
@@ -151,10 +153,12 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route path="/" element={<MainApp />} />
-          <Route path="/booking" element={<BookingPage />} />
-        </Routes>
+            <Routes>
+              <Route path="/" element={<MainApp />} />
+              <Route path="/booking" element={<BookingPage />} />
+              <Route path="/booking/success" element={<BookingSuccess />} />
+              <Route path="/booking/canceled" element={<BookingCanceled />} />
+            </Routes>
         
         {/* Modales fuera del contenedor principal para evitar problemas de overflow */}
         <div id="modal-root"></div>

@@ -3,8 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY
+  process.env.VITE_SUPABASE_URL,
+  process.env.VITE_SUPABASE_ANON_KEY
 )
 
 export default async function handler(req, res) {
@@ -68,8 +68,11 @@ export default async function handler(req, res) {
   res.json({ received: true })
 }
 
+// Configuración para Vercel
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: {
+      sizeLimit: '1mb',
+    },
   },
 }
