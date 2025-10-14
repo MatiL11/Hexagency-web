@@ -44,7 +44,10 @@ export default async function handler(req, res) {
 
     console.log('Sesión creada exitosamente:', session.id)
 
-    res.json({ id: session.id })
+    res.json({ 
+      id: session.id,
+      url: session.url 
+    })
 
   } catch (error) {
     console.error('Error creando sesión de checkout:', error)

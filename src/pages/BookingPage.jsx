@@ -78,15 +78,11 @@ const CheckoutForm = ({ selectedPlan, formData, onSuccess }) => {
         return
       }
 
-      // Redirigir a Stripe Checkout
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      })
+      // Redirigir a Stripe Checkout usando window.location (compatible con todas las versiones)
+      window.location.href = session.url
 
-      if (error) {
-        setError(error.message)
-        setLoading(false)
-      }
+      // No necesitamos manejar errores aquí porque la redirección es directa
+      return
 
       setLoading(false)
 
