@@ -8,13 +8,12 @@ import About from './components/About'
 import Services from './components/Services'
 import MediaSection from './components/MediaSection'
 import ContactForm from './components/ContactForm'
-import AdminPanel from './components/AdminPanel'
 import BookingPage from './pages/BookingPage'
 import BookingSuccess from './pages/BookingSuccess'
 import BookingCanceled from './pages/BookingCanceled'
+import AdminPage from './pages/AdminPage'
 
 const MainApp = () => {
-  const [showAdminPanel, setShowAdminPanel] = useState(false)
   const [showContactForm, setShowContactForm] = useState(false)
 
   // Controlar scrollbar cuando se muestra el formulario
@@ -100,7 +99,7 @@ const MainApp = () => {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Header onOpenAdminPanel={() => setShowAdminPanel(true)} />
+      <Header />
     
       {/* Contenedor horizontal con scroll */}
       <div 
@@ -144,7 +143,6 @@ const MainApp = () => {
           ))}
         </div>
       )}
-      {showAdminPanel && <AdminPanel onClose={() => setShowAdminPanel(false)} />}
     </div>
   )
 }
@@ -153,12 +151,13 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-            <Routes>
-              <Route path="/" element={<MainApp />} />
-              <Route path="/booking" element={<BookingPage />} />
-              <Route path="/booking/success" element={<BookingSuccess />} />
-              <Route path="/booking/canceled" element={<BookingCanceled />} />
-            </Routes>
+        <Routes>
+          <Route path="/" element={<MainApp />} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/booking/success" element={<BookingSuccess />} />
+          <Route path="/booking/canceled" element={<BookingCanceled />} />
+          <Route path="/admin" element={<AdminPage />} />
+        </Routes>
         
         {/* Modales fuera del contenedor principal para evitar problemas de overflow */}
         <div id="modal-root"></div>

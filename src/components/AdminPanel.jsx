@@ -1,55 +1,98 @@
 import { useState, useEffect } from 'react'
+import { supabase } from '../lib/supabase'
 
 const AdminPanel = ({ onClose }) => {
   const [appointments, setAppointments] = useState([])
   const [filter, setFilter] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
 
-  // Datos de ejemplo
+  // Cargar citas reales de Supabase
   useEffect(() => {
-    const mockAppointments = [
-      {
-        id: 1,
-        nombre: 'Juan Pérez',
-        email: 'juan@empresa.com',
-        telefono: '+1234567890',
-        empresa: 'Tech Solutions',
-        tipoNegocio: 'tecnologia',
-        ventasMensuales: '50k-100k',
-        fechaPreferida: '2024-01-15',
-        horaPreferida: '9-12',
-        status: 'pending',
-        fechaCreacion: '2024-01-10'
-      },
-      {
-        id: 2,
-        nombre: 'María García',
-        email: 'maria@restaurante.com',
-        telefono: '+1234567891',
-        empresa: 'Restaurante El Buen Sabor',
-        tipoNegocio: 'restaurante',
-        ventasMensuales: '15k-50k',
-        fechaPreferida: '2024-01-16',
-        horaPreferida: '15-18',
-        status: 'confirmed',
-        fechaCreacion: '2024-01-09'
-      },
-      {
-        id: 3,
-        nombre: 'Carlos López',
-        email: 'carlos@clinica.com',
-        telefono: '+1234567892',
-        empresa: 'Clínica Dental López',
-        tipoNegocio: 'salud',
-        ventasMensuales: '30k-50k',
-        fechaPreferida: '2024-01-17',
-        horaPreferida: '12-15',
-        status: 'completed',
-        fechaCreacion: '2024-01-08'
-      }
-    ]
-    setAppointments(mockAppointments)
+    fetchAppointments()
   }, [])
+
+  const fetchAppointments = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('citas')
+        .select('*')
+        .order('created_at', { ascending: false })
+
+      if (error) {
+        console.error('Error cargando citas:', error)
+        return
+      }
+
+      // Transformar datos de Supabase al formato esperado
+      const transformedAppointments = data.map(cita => ({
+        id: cita.id,
+        nombre: cita.nombre,
+        email: cita.email,
+        telefono: cita.telefono,
+        empresa: cita.empresa || 'No especificada',
+        plan: cita.plan,
+        fechaPreferida: cita.fecha_preferida,
+        horaPreferida: cita.hora_preferida,
+        motivoConsulta: cita.motivo_consulta,
+        status: cita.status,
+        paymentStatus: cita.payment_status,
+        fechaCreacion: cita.created_at,
+        stripePaymentIntentId: cita.stripe_payment_intent_id,
+        stripeSessionId: cita.stripe_session_id,
+        amountPaid: cita.amount_paid
+      }))
+
+      setAppointments(transformedAppointments)
+    } catch (err) {
+      console.error('Error:', err)
+    }
+  }
+
+  const updateAppointmentStatus = async (id, newStatus) => {
+    try {
+      const { error } = await supabase
+        .from('citas')
+        .update({ status: newStatus })
+        .eq('id', id)
+
+      if (error) {
+        console.error('Error actualizando cita:', error)
+        return
+      }
+
+      // Actualizar la lista local
+      setAppointments(appointments.map(appointment => 
+        appointment.id === id 
+          ? { ...appointment, status: newStatus }
+          : appointment
+      ))
+    } catch (err) {
+      console.error('Error:', err)
+    }
+  }
+
+  const updatePaymentStatus = async (id, newPaymentStatus) => {
+    try {
+      const { error } = await supabase
+        .from('citas')
+        .update({ payment_status: newPaymentStatus })
+        .eq('id', id)
+
+      if (error) {
+        console.error('Error actualizando pago:', error)
+        return
+      }
+
+      // Actualizar la lista local
+      setAppointments(appointments.map(appointment => 
+        appointment.id === id 
+          ? { ...appointment, paymentStatus: newPaymentStatus }
+          : appointment
+      ))
+    } catch (err) {
+      console.error('Error:', err)
+    }
+  }
 
   const filteredAppointments = appointments.filter(appointment => {
     const matchesFilter = filter === 'all' || appointment.status === filter
@@ -59,11 +102,6 @@ const AdminPanel = ({ onClose }) => {
     return matchesFilter && matchesSearch
   })
 
-  const updateAppointmentStatus = (id, newStatus) => {
-    setAppointments(appointments.map(apt => 
-      apt.id === id ? { ...apt, status: newStatus } : apt
-    ))
-  }
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -104,12 +142,20 @@ const AdminPanel = ({ onClose }) => {
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b">
           <h2 className="text-2xl font-bold text-black">Panel de Administración - Citas</h2>
-          <button
-            onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-2xl"
-          >
-            ×
-          </button>
+          <div className="flex gap-3">
+            <button
+              onClick={fetchAppointments}
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              🔄 Actualizar
+            </button>
+            <button
+              onClick={onClose}
+              className="text-gray-500 hover:text-gray-700 text-2xl"
+            >
+              ×
+            </button>
+          </div>
         </div>
 
         {/* Filters and Search */}
@@ -142,7 +188,7 @@ const AdminPanel = ({ onClose }) => {
 
         {/* Stats */}
         <div className="p-6 border-b">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-black">{appointments.length}</div>
               <div className="text-sm text-gray-600">Total</div>
@@ -164,6 +210,12 @@ const AdminPanel = ({ onClose }) => {
                 {appointments.filter(apt => apt.status === 'completed').length}
               </div>
               <div className="text-sm text-gray-600">Completadas</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-purple-600">
+                {appointments.filter(apt => apt.paymentStatus === 'completed').length}
+              </div>
+              <div className="text-sm text-gray-600">Pagadas</div>
             </div>
           </div>
         </div>
@@ -190,11 +242,20 @@ const AdminPanel = ({ onClose }) => {
                         <div><strong>Empresa:</strong> {appointment.empresa}</div>
                         <div><strong>Email:</strong> {appointment.email}</div>
                         <div><strong>Teléfono:</strong> {appointment.telefono}</div>
-                        <div><strong>Tipo:</strong> {getTipoNegocioText(appointment.tipoNegocio)}</div>
-                        <div><strong>Ventas:</strong> {appointment.ventasMensuales}</div>
+                        <div><strong>Plan:</strong> {appointment.plan}</div>
                         <div><strong>Fecha:</strong> {appointment.fechaPreferida}</div>
                         <div><strong>Hora:</strong> {appointment.horaPreferida}</div>
-                        <div><strong>Registro:</strong> {appointment.fechaCreacion}</div>
+                        <div><strong>Motivo:</strong> {appointment.motivoConsulta}</div>
+                        <div><strong>Registro:</strong> {new Date(appointment.fechaCreacion).toLocaleDateString()}</div>
+                        <div><strong>Pago:</strong> 
+                          <span className={`ml-1 px-2 py-1 rounded-full text-xs ${
+                            appointment.paymentStatus === 'completed' 
+                              ? 'bg-green-100 text-green-800' 
+                              : 'bg-yellow-100 text-yellow-800'
+                          }`}>
+                            {appointment.paymentStatus === 'completed' ? '✅ Pagado' : '⏳ Pendiente'}
+                          </span>
+                        </div>
                       </div>
                     </div>
                     
@@ -230,9 +291,55 @@ const AdminPanel = ({ onClose }) => {
                         >
                           Email
                         </button>
+                        
+                        {/* Botones de estado de pago */}
+                        {appointment.paymentStatus === 'pending' && (
+                          <button
+                            onClick={() => updatePaymentStatus(appointment.id, 'completed')}
+                            className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700"
+                            title="Marcar como pagado (transferencia bancaria)"
+                          >
+                            💰 Marcar Pagado
+                          </button>
+                        )}
+                        {appointment.paymentStatus === 'completed' && (
+                          <button
+                            onClick={() => updatePaymentStatus(appointment.id, 'pending')}
+                            className="px-3 py-1 bg-yellow-600 text-white text-sm rounded hover:bg-yellow-700"
+                            title="Marcar como pendiente de pago"
+                          >
+                            ⏳ Marcar Pendiente
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Información de pago adicional */}
+                  {appointment.paymentStatus === 'completed' && (
+                    <div className="mt-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                      <div className="text-sm text-green-800">
+                        <strong>💰 Pago Completado:</strong> ${appointment.amountPaid ? (appointment.amountPaid / 100).toFixed(2) : '100.00'} USD
+                        <br />
+                        {appointment.stripePaymentIntentId ? (
+                          <>
+                            <strong>💳 Método:</strong> Stripe (Tarjeta)
+                            <br />
+                            <strong>🔗 Stripe ID:</strong> {appointment.stripePaymentIntentId}
+                            {appointment.stripeSessionId && (
+                              <><br /><strong>📋 Sesión:</strong> {appointment.stripeSessionId}</>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <strong>🏦 Método:</strong> Transferencia Bancaria (Manual)
+                            <br />
+                            <strong>📅 Registrado:</strong> {new Date().toLocaleDateString()}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

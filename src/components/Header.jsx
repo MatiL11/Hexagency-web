@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { User, Menu, LogOut, LayoutDashboard } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import HamburgerMenu from './HamburgerMenu'
 import LoginModal from './LoginModal'
 import HexagencyLogo from '../assets/HexaLogo.png'
 
-const Header = ({ onOpenAdminPanel }) => {
+const Header = () => {
+  const navigate = useNavigate()
   const { user, signOut } = useAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
@@ -44,7 +46,7 @@ const Header = ({ onOpenAdminPanel }) => {
               {/* Panel Admin - Solo visible si está autenticado */}
               {user && (
                 <button 
-                  onClick={onOpenAdminPanel}
+                  onClick={() => navigate('/admin')}
                   className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors text-xs sm:text-sm font-medium"
                   title="Panel Administrativo"
                 >
