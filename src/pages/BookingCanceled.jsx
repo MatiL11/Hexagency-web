@@ -2,24 +2,29 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { XCircle, Calendar, CreditCard, ArrowLeft, Phone, Mail } from 'lucide-react'
 
-const BookingCanceled = ({ bookingData, onClose }) => {
+const BookingCanceled = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const [bookingData, setBookingData] = useState(null)
+
+  useEffect(() => {
+    // Extraer datos de la URL si los hay
+    const urlParams = new URLSearchParams(location.search)
+    
+    setBookingData({
+      plan: urlParams.get('plan') || 'No especificado',
+      email: urlParams.get('email') || 'No especificado',
+      fecha: urlParams.get('fecha') || 'No especificada',
+      hora: urlParams.get('hora') || 'No especificada'
+    })
+  }, [location])
 
   const handleTryAgain = () => {
-    if (onClose) {
-      onClose()
-      setTimeout(() => navigate('/booking'), 100)
-    } else {
-      navigate('/booking')
-    }
+    navigate('/booking')
   }
 
   const handleBackToHome = () => {
-    if (onClose) {
-      onClose()
-    } else {
-      navigate('/')
-    }
+    navigate('/')
   }
 
   const handleContactWhatsApp = () => {
@@ -37,7 +42,7 @@ const BookingCanceled = ({ bookingData, onClose }) => {
   }
 
   return (
-    <div className="p-6">
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         {/* Header de cancelación */}
         <div className="text-center mb-8">
