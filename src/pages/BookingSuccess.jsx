@@ -136,31 +136,7 @@ const BookingSuccess = () => {
               </div>
               <div className="ml-3">
                 <p className="text-sm text-gray-700">
-                  Recibirás un email de confirmación en las próximas horas.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100">
-                  <span className="text-sm font-medium text-blue-600">2</span>
-                </div>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-gray-700">
-                  Nuestro equipo se pondrá en contacto contigo para coordinar los detalles finales.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-6 w-6 rounded-full bg-blue-100">
-                  <span className="text-sm font-medium text-blue-600">3</span>
-                </div>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm text-gray-700">
-                  El pago de $100 USD se descontará del precio total del plan si decides continuar.
+                  Ponte en contacto con nosotros para coordinar los detalles finales.
                 </p>
               </div>
             </div>
