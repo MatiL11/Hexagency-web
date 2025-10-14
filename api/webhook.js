@@ -21,9 +21,9 @@ export default async function handler(req, res) {
     // Para desarrollo, si no hay webhook secret, parsear directamente
     if (!webhookSecret) {
       console.log('⚠️  Webhook secret no configurado, parseando directamente')
-      event = req.body
+      event = JSON.parse(req.body)
     } else {
-      // Para producción, verificar la firma
+      // Para producción, verificar la firma con raw body
       event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret)
     }
 
@@ -75,11 +75,9 @@ export default async function handler(req, res) {
   }
 }
 
-// Configuración para Vercel
+// Configuración para Vercel - Raw body para webhooks
 export const config = {
   api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
+    bodyParser: false,
   },
 }
