@@ -16,7 +16,7 @@ const About = () => {
     },
     {
       name: "Alesh Ancira",
-      position: "Consultora en Posicionamiento Digital & Asesora de Imagen",
+      position: "Consultor en Posicionamiento Digital & Asesor de Imagen",
       icon: Camera,
       image: AleshAnciraImg
     },
@@ -28,7 +28,7 @@ const About = () => {
     },
     {
       name: "Enrique Ramírez",
-      position: "Operador de Drones & Productor Audiovisual",
+      position: "Productor de eventos Senior",
       icon: Video,
       image: EnriqueRamirezImg
     },
