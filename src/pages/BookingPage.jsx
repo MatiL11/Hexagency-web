@@ -20,7 +20,7 @@ const CheckoutForm = ({ selectedPlan, formData, onSuccess }) => {
       const stripe = await stripePromise
 
       // Validar datos requeridos
-      if (!formData.nombre || !formData.email || !formData.telefono || !formData.fechaPreferida || !formData.horaPreferida || !formData.motivoConsulta) {
+      if (!formData.nombre || !formData.email || !formData.telefono || !formData.fechaPreferida || !formData.horaPreferida || !formData.asesor || !formData.motivoConsulta) {
         setError('Por favor completa todos los campos requeridos')
         setLoading(false)
         return
@@ -38,6 +38,7 @@ const CheckoutForm = ({ selectedPlan, formData, onSuccess }) => {
             plan: selectedPlan,
             fecha_preferida: formData.fechaPreferida,
             hora_preferida: formData.horaPreferida,
+            asesor_preferido: formData.asesor,
             motivo_consulta: formData.motivoConsulta,
             payment_status: 'pending',
             status: 'pending'
@@ -180,6 +181,7 @@ const BookingPage = () => {
     empresa: '',
     fechaPreferida: '',
     horaPreferida: '',
+    asesor: '',
     motivoConsulta: ''
   })
 
@@ -243,6 +245,7 @@ const BookingPage = () => {
                 <p><span className="font-medium">Plan:</span> {bookingData?.plan}</p>
                 <p><span className="font-medium">Fecha:</span> {bookingData?.bookingData.fechaPreferida}</p>
                 <p><span className="font-medium">Hora:</span> {bookingData?.bookingData.horaPreferida}</p>
+                <p><span className="font-medium">Asesor:</span> {bookingData?.bookingData.asesor || 'Sin preferencia'}</p>
                 <p><span className="font-medium">Email:</span> {bookingData?.bookingData.email}</p>
               </div>
             </div>
@@ -405,6 +408,26 @@ const BookingPage = () => {
                   <option value="16:00">04:00 PM</option>
                   <option value="17:00">05:00 PM</option>
                   <option value="18:00">06:00 PM</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Asesor Preferido *
+                </label>
+                <select
+                  name="asesor"
+                  value={formData.asesor}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
+                >
+                  <option value="">Selecciona un asesor</option>
+                  <option value="Fernando Ramírez">Fernando Ramírez - CEO & Fundador</option>
+                  <option value="Enrique Ramírez">Enrique Ramírez - Director de Estrategia</option>
+                  <option value="Alesh Ancira">Alesh Ancira - Director de Operaciones</option>
+                  <option value="Yzak García">Yzak García - Director de Desarrollo</option>
+                  <option value="Sin preferencia">Sin preferencia (Te asignaremos el mejor asesor)</option>
                 </select>
               </div>
             </div>

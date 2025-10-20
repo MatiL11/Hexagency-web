@@ -39,24 +39,25 @@ const AdminPage = () => {
         return
       }
 
-      // Transformar datos de Supabase al formato esperado
-      const transformedAppointments = data.map(cita => ({
-        id: cita.id,
-        nombre: cita.nombre,
-        email: cita.email,
-        telefono: cita.telefono,
-        empresa: cita.empresa || 'No especificada',
-        plan: cita.plan,
-        fechaPreferida: cita.fecha_preferida,
-        horaPreferida: cita.hora_preferida,
-        motivoConsulta: cita.motivo_consulta,
-        status: cita.status,
-        paymentStatus: cita.payment_status,
-        fechaCreacion: cita.created_at,
-        stripePaymentIntentId: cita.stripe_payment_intent_id,
-        stripeSessionId: cita.stripe_session_id,
-        amountPaid: cita.amount_paid
-      }))
+        // Transformar datos de Supabase al formato esperado
+        const transformedAppointments = data.map(cita => ({
+          id: cita.id,
+          nombre: cita.nombre,
+          email: cita.email,
+          telefono: cita.telefono,
+          empresa: cita.empresa || 'No especificada',
+          plan: cita.plan,
+          fechaPreferida: cita.fecha_preferida,
+          horaPreferida: cita.hora_preferida,
+          asesorPreferido: cita.asesor_preferido || 'Sin preferencia',
+          motivoConsulta: cita.motivo_consulta,
+          status: cita.status,
+          paymentStatus: cita.payment_status,
+          fechaCreacion: cita.created_at,
+          stripePaymentIntentId: cita.stripe_payment_intent_id,
+          stripeSessionId: cita.stripe_session_id,
+          amountPaid: cita.amount_paid
+        }))
 
       setAppointments(transformedAppointments)
     } catch (err) {
@@ -264,6 +265,7 @@ const AdminPage = () => {
                       <div><strong>Plan:</strong> {appointment.plan}</div>
                       <div><strong>Fecha:</strong> {appointment.fechaPreferida}</div>
                       <div><strong>Hora:</strong> {appointment.horaPreferida}</div>
+                      <div><strong>Asesor:</strong> {appointment.asesorPreferido}</div>
                       <div className="md:col-span-2 lg:col-span-3"><strong>Motivo:</strong> {appointment.motivoConsulta}</div>
                       <div><strong>Registro:</strong> {new Date(appointment.fechaCreacion).toLocaleDateString()}</div>
                       <div><strong>Pago:</strong> 

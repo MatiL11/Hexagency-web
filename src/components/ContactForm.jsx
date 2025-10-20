@@ -54,25 +54,30 @@ const ContactForm = ({ onHideContactForm }) => {
     setIsSubmitting(true)
     
     try {
-      // Configuración de EmailJS
-      // INSTRUCCIONES: Reemplaza estos valores con los que obtienes de emailjs.com
-      // 1. Service ID: Obtenido al crear el servicio SMTP de GoDaddy
-      // 2. Template ID: Obtenido al crear el template de email
-      // 3. Public Key: Obtenido en Account → General
-      const serviceID = 'TU_SERVICE_ID' // Ej: 'service_abc123'
-      const templateID = 'TU_TEMPLATE_ID' // Ej: 'template_xyz789'
-      const publicKey = 'TU_PUBLIC_KEY' // Ej: 'AbC123XyZ'
+      // Configuración de EmailJS desde variables de entorno
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      
+      // Verificar que las credenciales estén configuradas
+      if (!serviceID || !templateID || !publicKey) {
+        console.error('EmailJS no está configurado correctamente')
+        alert('Error: El servicio de email no está configurado. Por favor, contacta al administrador.')
+        setIsSubmitting(false)
+        return
+      }
       
       // Preparar los datos para el email
       const templateParams = {
-        to_email: 'fernando@hexagency.mx',
-        empresa: formData.empresa,
-        telefono: formData.telefono,
-        tipo_negocio: formData.tipoNegocio,
-        empleados: formData.empleados,
-        fecha_hora: formData.fechaHoraPreferida,
-        problema: formData.problema,
-        reply_to: formData.telefono
+        from_name: formData.empresa,
+        from_email: formData.telefono, // Puedes agregar un campo de email si lo necesitas
+        phone: formData.telefono,
+        company: formData.empresa,
+        business_type: formData.tipoNegocio,
+        employees: formData.empleados,
+        preferred_datetime: formData.fechaHoraPreferida,
+        message: formData.problema,
+        to_email: 'fernando@hexagency.mx'
       }
       
       // Enviar email
