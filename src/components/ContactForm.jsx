@@ -54,34 +54,32 @@ const ContactForm = ({ onHideContactForm }) => {
     setIsSubmitting(true)
     
     try {
-      // Configuración de EmailJS desde variables de entorno
-      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
-      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      // TODO: Configurar EmailJS cuando el cliente esté listo
+      // const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      // const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      // const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       
-      // Verificar que las credenciales estén configuradas
-      if (!serviceID || !templateID || !publicKey) {
-        console.error('EmailJS no está configurado correctamente')
-        alert('Error: El servicio de email no está configurado. Por favor, contacta al administrador.')
-        setIsSubmitting(false)
-        return
-      }
+      // Preparar mensaje para WhatsApp con los datos del formulario
+      const whatsappMessage = `¡Hola! Me interesa el asesoramiento de Hexagency.
+
+📋 *Información de mi empresa:*
+🏢 *Empresa:* ${formData.empresa}
+📱 *Teléfono:* ${formData.telefono}
+🏪 *Tipo de negocio:* ${formData.tipoNegocio}
+👥 *Empleados:* ${formData.empleados}
+📅 *Fecha/hora preferida:* ${formData.fechaHoraPreferida}
+
+💬 *Problema a solucionar:*
+${formData.problema}
+
+¿Podrían contactarme para una consulta personalizada?`
+
+      // Redirigir a WhatsApp con el mensaje pre-llenado
+      const encodedMessage = encodeURIComponent(whatsappMessage)
+      const whatsappURL = `https://wa.me/523511240636?text=${encodedMessage}`
       
-      // Preparar los datos para el email
-      const templateParams = {
-        from_name: formData.empresa,
-        from_email: formData.telefono, // Puedes agregar un campo de email si lo necesitas
-        phone: formData.telefono,
-        company: formData.empresa,
-        business_type: formData.tipoNegocio,
-        employees: formData.empleados,
-        preferred_datetime: formData.fechaHoraPreferida,
-        message: formData.problema,
-        to_email: 'fernando@hexagency.mx'
-      }
-      
-      // Enviar email
-      await emailjs.send(serviceID, templateID, templateParams, publicKey)
+      // Abrir WhatsApp en una nueva pestaña
+      window.open(whatsappURL, '_blank')
       
       setIsSubmitting(false)
       setIsSubmitted(true)
@@ -97,11 +95,11 @@ const ContactForm = ({ onHideContactForm }) => {
       })
       
     } catch (error) {
-      console.error('Error enviando email:', error)
+      console.error('Error procesando formulario:', error)
       setIsSubmitting(false)
       
       // Mostrar mensaje de error al usuario
-      alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.')
+      alert('Hubo un error al procesar el formulario. Por favor, inténtalo de nuevo.')
     }
   }
 
@@ -112,10 +110,10 @@ const ContactForm = ({ onHideContactForm }) => {
           <div className="bg-green-50 border border-green-200 rounded-lg p-8">
             <div className="text-green-600 text-6xl mb-4">✓</div>
             <h2 className="text-3xl font-bold text-black mb-4">
-              ¡Gracias por tu interés!
+              ¡Redirigiendo a WhatsApp!
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Hemos recibido tu información y nos pondremos en contacto contigo en las próximas 24 horas.
+              Se ha abierto WhatsApp con tu mensaje pre-llenado. Envía el mensaje para que nos pongamos en contacto contigo.
             </p>
             <button
               onClick={() => {
@@ -131,7 +129,7 @@ const ContactForm = ({ onHideContactForm }) => {
               }}
               className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors"
             >
-              Enviar otra consulta
+              Hacer otra consulta
             </button>
           </div>
         </div>
@@ -369,7 +367,7 @@ const ContactForm = ({ onHideContactForm }) => {
                   disabled={isSubmitting}
                   className="w-full bg-black hover:bg-gray-800 text-white font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base"
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
+                  {isSubmitting ? 'Redirigiendo...' : 'Enviar a WhatsApp'}
                 </button>
                 <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">
                   * Campos obligatorios
