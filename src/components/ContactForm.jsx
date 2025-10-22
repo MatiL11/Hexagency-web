@@ -9,6 +9,7 @@ const ContactForm = ({ onHideContactForm }) => {
     tipoNegocio: '',
     empleados: '',
     fechaHoraPreferida: '',
+    asesor: '',
     problema: ''
   })
 
@@ -68,6 +69,7 @@ const ContactForm = ({ onHideContactForm }) => {
 🏪 *Tipo de negocio:* ${formData.tipoNegocio}
 👥 *Empleados:* ${formData.empleados}
 📅 *Fecha/hora preferida:* ${formData.fechaHoraPreferida}
+👨‍💼 *Asesor preferido:* ${formData.asesor}
 
 💬 *Problema a solucionar:*
 ${formData.problema}
@@ -91,6 +93,7 @@ ${formData.problema}
         tipoNegocio: '',
         empleados: '',
         fechaHoraPreferida: '',
+        asesor: '',
         problema: ''
       })
       
@@ -124,6 +127,7 @@ ${formData.problema}
                   tipoNegocio: '',
                   empleados: '',
                   fechaHoraPreferida: '',
+                  asesor: '',
                   problema: ''
                 })
               }}
@@ -342,7 +346,28 @@ ${formData.problema}
                     />
                   </div>
 
-                  {/* Campo 6 - Problema a solucionar */}
+                  {/* Campo 6 - Asesor preferido */}
+                  <div className="group">
+                    <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
+                      Asesor preferido *
+                    </label>
+                    <select
+                      name="asesor"
+                      value={formData.asesor}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-2 sm:px-3 py-1 sm:py-1.5 bg-white border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-black/20 focus:border-black transition-all duration-300 text-black text-sm sm:text-base"
+                    >
+                      <option value="">Selecciona un asesor</option>
+                      <option value="Fernando Ramírez">Fernando Ramírez - CEO & Fundador</option>
+                      <option value="Enrique Ramírez">Enrique Ramírez - Director de Estrategia</option>
+                      <option value="Alesh Ancira">Alesh Ancira - Director de Operaciones</option>
+                      <option value="Yzak García">Yzak García - Director de Desarrollo</option>
+                      <option value="Sin preferencia">Sin preferencia (Te asignaremos el mejor asesor)</option>
+                    </select>
+                  </div>
+
+                  {/* Campo 7 - Problema a solucionar */}
                   <div className="group sm:col-span-2 lg:col-span-1">
                     <label className="block text-xs sm:text-sm font-semibold text-gray-300 mb-2 sm:mb-3 group-focus-within:text-white transition-colors">
                       Problema a solucionar *
