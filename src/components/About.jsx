@@ -1,6 +1,6 @@
 import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool, Camera, Video } from 'lucide-react'
 import FernandoRamirezImg from '../assets/FernandoRamirez.jpeg'
-import YzakGarciaImg from '../assets/YzakGarcía2.jpeg'
+import YzakGarciaImg from '../assets/YzakGarcía.jpeg'
 import AleshAnciraImg from '../assets/AleshAncira.jpeg'
 import EnriqueRamirezImg from '../assets/EnriqueRamirez.jpeg'
 
