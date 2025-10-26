@@ -1,6 +1,6 @@
 import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool, Camera, Video } from 'lucide-react'
 import FernandoRamirezImg from '../assets/FernandoRamirez.jpeg'
-import YzakGarciaImg from '../assets/YzakGarcía.jpeg'
+import YzakGarciaImg from '../assets/YzakGarcía2.jpeg'
 import AleshAnciraImg from '../assets/AleshAncira.jpeg'
 import EnriqueRamirezImg from '../assets/EnriqueRamirez.jpeg'
 
@@ -22,7 +22,7 @@ const About = () => {
     },
     {
       name: "Yzak García",
-      position: "Consultor en Real Estate & Asesor Bursátil",
+      position: "Real State y Asesor Bursátil",
       icon: Briefcase,
       image: YzakGarciaImg
     },
