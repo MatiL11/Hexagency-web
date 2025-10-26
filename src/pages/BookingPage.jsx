@@ -63,7 +63,7 @@ const CheckoutForm = ({ selectedPlan, formData, onSuccess }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          price: 'price_1SI9TLHsK7GwtAM5EAgYPRr6',
+          price: 'price_1SMVNT0myL7tIdHsUbNyxIrv',
           quantity: 1,
           plan: selectedPlan,
           bookingData: formData,
