@@ -1,7 +1,6 @@
-import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool, Camera, Video } from 'lucide-react'
+import { Users, Crown, Briefcase, Code, Shield, Palette, Database, PenTool, Video } from 'lucide-react'
 import FernandoRamirezImg from '../assets/FernandoRamirez.jpeg'
 import YzakGarciaImg from '../assets/YzakGarcía.jpeg'
-import AleshAnciraImg from '../assets/AleshAncira.jpeg'
 import EnriqueRamirezImg from '../assets/EnriqueRamirez.jpeg'
 
 const About = () => {
@@ -13,12 +12,6 @@ const About = () => {
       icon: Crown,
       image: FernandoRamirezImg,
       isDirector: true
-    },
-    {
-      name: "Alesh Ancira",
-      position: "Consultor en Posicionamiento Digital & Asesor de Imagen",
-      icon: Camera,
-      image: AleshAnciraImg
     },
     {
       name: "Yzak García",
@@ -173,12 +166,12 @@ const About = () => {
               })}
             </div>
 
-            {/* Segunda fila - 4 empleados */}
-            <div className="grid grid-cols-4 gap-2 sm:gap-3 justify-items-center">
+            {/* Segunda fila - 3 empleados */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 justify-items-center max-w-5xl mx-auto">
               {teamMembers.slice(4).map((member, index) => {
                 const IconComponent = member.icon
                 return (
-                  <div key={index + 3} className="bg-white rounded-lg shadow-md p-3 sm:p-4 hover:shadow-lg transition-shadow duration-300 w-full max-w-sm min-h-[140px] flex flex-col">
+                  <div key={index + 3} className="bg-white rounded-lg shadow-md p-3 sm:p-4 hover:shadow-lg transition-shadow duration-300 w-full max-w-xs min-h-[140px] flex flex-col">
                     {/* Team Member Image or Icon */}
                     <div className="flex-shrink-0">
                       {member.image ? (
