@@ -24,9 +24,9 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-40 bg-white">
+      <header className="fixed top-0 left-0 right-0 z-40 border-b border-black/5 bg-white/95 backdrop-blur">
         <div className="w-full px-4 sm:px-6">
-          <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="flex h-14 sm:h-16 items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0">
               <button 
@@ -36,7 +36,7 @@ const Header = () => {
                 <img 
                   src={HexagencyLogo} 
                   alt="Hexagency" 
-                  className="h-24 sm:h-32 w-auto object-contain"
+                  className="h-14 sm:h-20 w-auto object-contain drop-shadow-sm"
                 />
               </button>
             </div>

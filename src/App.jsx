@@ -102,20 +102,20 @@ const MainApp = () => {
       <Header />
     
       {/* Contenedor horizontal con scroll */}
-      <div 
+      <div
         ref={scrollContainerRef}
-        className="flex h-screen pt-16 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+        className="flex h-screen overflow-x-auto bg-white snap-x snap-mandatory scrollbar-hide"
       >
-        <div className="flex-shrink-0 w-full h-full snap-center">
+        <div className="box-border flex-shrink-0 w-full h-full snap-center bg-black pt-16 sm:pt-20">
           <Hero onShowContactForm={() => setShowContactForm(true)} />
         </div>
-        <div className="flex-shrink-0 w-full h-full snap-center">
+        <div className="box-border flex-shrink-0 w-full h-full snap-center pt-16 sm:pt-20">
           <Services />
         </div>
-        <div className="flex-shrink-0 w-full h-full snap-center">
+        <div className="box-border flex-shrink-0 w-full h-full snap-center pt-16 sm:pt-20">
           <About />
         </div>
-        <div className="flex-shrink-0 w-full h-full snap-center">
+        <div className="box-border flex-shrink-0 w-full h-full snap-center pt-16 sm:pt-20">
           <MediaSection />
         </div>
       </div>
